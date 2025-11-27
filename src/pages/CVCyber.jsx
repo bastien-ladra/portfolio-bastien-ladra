@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ProfilePhoto from "../assets/profile-photo.jpg";
 import {
   Shield,
   Cloud,
@@ -140,7 +141,7 @@ export default function CVCyber() {
         <div className="text-center mb-12">
           <div className="mb-8">
             <img
-              src="/assets/profile-photo.jpg"
+              src={ProfilePhoto}
               alt="Bastien Ladra"
               className="w-40 h-40 rounded-full mx-auto border-4 border-[#64ffda] shadow-2xl object-cover"
             />
