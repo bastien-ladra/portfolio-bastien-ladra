@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/portfolio-bastien-ladra/", // Enabled for GitHub Pages deployment
+  // base: "/portfolio-bastien-ladra/", // Uncomment for GitHub Pages deployment
 });
