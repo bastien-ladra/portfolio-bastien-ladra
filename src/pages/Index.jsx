@@ -167,11 +167,11 @@ export default function Index() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="mb-8">
-            <img
-              <img src={ProfilePhoto} ... />
-              alt="Bastien Ladra"
-              className="w-40 h-40 rounded-full mx-auto border-4 border-[#64ffda] shadow-2xl object-cover"
+         <div className="mb-8">
+          <img
+            src={ProfilePhoto}
+            alt="Bastien Ladra"
+            className="w-40 h-40 rounded-full mx-auto border-4 border-[#64ffda] shadow-2xl object-cover"
             />
           </div>
           <p className="text-[#64ffda] font-mono text-lg mb-4">
