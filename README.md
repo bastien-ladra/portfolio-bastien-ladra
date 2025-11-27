@@ -91,6 +91,21 @@ npm run build
 
 Les fichiers de production seront générés dans le dossier `dist/`.
 
+### Configuration pour le déploiement
+
+#### Pour GitHub Pages :
+
+1. Dans `vite.config.js`, décommentez la ligne :
+   ```js
+   base: "/portfolio-bastien-ladra/",
+   ```
+2. Build et déployez
+
+#### Pour Vercel/Netlify :
+
+- Gardez la configuration par défaut (base commenté)
+- Importez directement depuis GitHub
+
 ## 🎨 Personnalisation
 
 ### Modifier le contenu
