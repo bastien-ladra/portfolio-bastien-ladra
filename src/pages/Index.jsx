@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ProfilePhoto from "../assets/profile-photo.jpg";
+import HeroBackground from "../assets/hero-background-cybersecurity.jpg";
 import { Link } from "react-router-dom";
 import {
   Shield,
@@ -154,7 +156,7 @@ export default function Index() {
         id="accueil"
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
         style={{
-          backgroundImage: "url(/assets/hero-background-cybersecurity.jpg)",
+          backgroundImage: `url(${HeroBackground})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -167,7 +169,7 @@ export default function Index() {
         >
           <div className="mb-8">
             <img
-              src="/assets/profile-photo.jpg"
+              <img src={ProfilePhoto} ... />
               alt="Bastien Ladra"
               className="w-40 h-40 rounded-full mx-auto border-4 border-[#64ffda] shadow-2xl object-cover"
             />
