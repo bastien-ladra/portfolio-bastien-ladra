@@ -93,18 +93,18 @@ Les fichiers de production seront générés dans le dossier `dist/`.
 
 ### Configuration pour le déploiement
 
-#### Pour GitHub Pages :
+#### 🚀 GitHub Pages (Automatisé) :
 
-1. Dans `vite.config.js`, décommentez la ligne :
-   ```js
-   base: "/portfolio-bastien-ladra/",
-   ```
-2. Build et déployez
+- ✅ **Déploiement automatique** via GitHub Actions
+- ✅ **Build optimisé** avec le bon base path
+- ✅ **Déclenché** à chaque push sur master
+- 🔗 **URL** : `https://bastien-ladra.github.io/portfolio-bastien-ladra/`
 
 #### Pour Vercel/Netlify :
 
 - Gardez la configuration par défaut (base commenté)
 - Importez directement depuis GitHub
+- Déploiement automatique
 
 ## 🎨 Personnalisation
 
