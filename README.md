@@ -95,10 +95,16 @@ Les fichiers de production seront générés dans le dossier `dist/`.
 
 #### 🚀 GitHub Pages (Automatisé) :
 
-- ✅ **Déploiement automatique** via GitHub Actions
+- ✅ **Déploiement automatique** via GitHub Actions moderne
 - ✅ **Build optimisé** avec le bon base path
 - ✅ **Déclenché** à chaque push sur master
 - 🔗 **URL** : `https://bastien-ladra.github.io/portfolio-bastien-ladra/`
+
+**Configuration requise :**
+
+1. Allez dans **Settings > Pages** de votre repository
+2. Sélectionnez **"GitHub Actions"** comme source
+3. Le déploiement se fait automatiquement
 
 #### Pour Vercel/Netlify :
 
