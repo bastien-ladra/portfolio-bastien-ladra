@@ -1,15 +1,10 @@
 import SectionHeading from "../components/SectionHeading";
-import { experiences } from "../data/content";
 
-export default function Experience() {
+export default function Experience({ experiences, copy }) {
   return (
     <section id="experience" className="section-block">
       <div className="site-shell">
-        <SectionHeading
-          eyebrow="Professional experience"
-          title="Production experience across DevSecOps, cloud security and SecOps."
-          description="My background spans secure delivery, GCP security operations, vulnerability supervision and engineering automation — not only lab projects."
-        />
+        <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
         <div className="border-t border-white/10">
           {experiences.map((experience) => (
