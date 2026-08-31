@@ -73,7 +73,8 @@ requirePattern("src/pages/Index.jsx", indexPage, /className=["']skip-link["']/, 
 requirePattern("src/pages/Index.jsx", indexPage, /id=["']main-content["']/, "missing main-content skip target");
 requirePattern("src/pages/Index.jsx", indexPage, /storedLanguage === ["']en["'] \? ["']en["'] : ["']fr["']/, "French must remain the default language");
 requirePattern("src/pages/Index.jsx", indexPage, /portfolio-language/, "language preference must be persisted");
-requirePattern("src/pages/Index.jsx", indexPage, /language=\{language\}/, "localized recruiter contact actions are missing");
+requirePattern("src/pages/Index.jsx", indexPage, /<Experience[^>]+language=\{language\}/, "experience section must receive the active language");
+requirePattern("src/pages/Index.jsx", indexPage, /<Contact[^>]+language=\{language\}/, "localized recruiter contact actions are missing");
 
 const navbar = read("src/components/Navbar.jsx");
 requirePattern("src/components/Navbar.jsx", navbar, /\["fr", "en"\]/, "FR/EN language selector is missing");
@@ -92,6 +93,15 @@ const contact = read("src/sections/Contact.jsx");
 requirePattern("src/sections/Contact.jsx", contact, /profile\.email/, "contact section must expose the public email address");
 requirePattern("src/sections/Contact.jsx", contact, /Écrire par e-mail/, "French direct email CTA is missing");
 requirePattern("src/sections/Contact.jsx", contact, /Connect on LinkedIn/, "English LinkedIn CTA is missing");
+
+const experience = read("src/sections/Experience.jsx");
+requirePattern("src/sections/Experience.jsx", experience, /professionalExperiences/, "professional experience must be separated explicitly");
+requirePattern("src/sections/Experience.jsx", experience, /!experience\.company\.toUpperCase\(\)\.includes\(["']EPITECH EIP["']\)/, "Epitech EIP must not appear in the professional timeline");
+requirePattern("src/sections/Experience.jsx", experience, /academicExperience/, "academic project must remain visible separately");
+requirePattern("src/sections/Experience.jsx", experience, /Projet académique · Epitech/, "French academic-project label is missing");
+requirePattern("src/sections/Experience.jsx", experience, /Academic project · Epitech/, "English academic-project label is missing");
+requirePattern("src/sections/Experience.jsx", experience, /présentée séparément des expériences professionnelles/, "French employment boundary must be explicit");
+requirePattern("src/sections/Experience.jsx", experience, /shown separately from professional employment/, "English employment boundary must be explicit");
 
 const recruiterProofPanel = read("src/components/RecruiterProofPanel.jsx");
 requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /Des preuves avant les buzzwords/, "French recruiter proof positioning is missing");
