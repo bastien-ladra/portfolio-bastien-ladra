@@ -56,7 +56,7 @@ export default function Index() {
           copy={content.copy}
         />
         <Projects projects={content.projects} language={language} copy={content.copy.projects} />
-        <Experience experiences={content.experiences} copy={content.copy.experience} />
+        <Experience experiences={content.experiences} copy={content.copy.experience} language={language} />
         <Expertise expertise={content.expertise} copy={content.copy.expertise} />
         <Credentials
           credentials={content.credentials}
