@@ -95,13 +95,20 @@ requirePattern("src/sections/Contact.jsx", contact, /Écrire par e-mail/, "Frenc
 requirePattern("src/sections/Contact.jsx", contact, /Connect on LinkedIn/, "English LinkedIn CTA is missing");
 
 const experience = read("src/sections/Experience.jsx");
+requirePattern("src/sections/Experience.jsx", experience, /getExperienceKind/, "experience section must use explicit classification metadata");
 requirePattern("src/sections/Experience.jsx", experience, /professionalExperiences/, "professional experience must be separated explicitly");
-requirePattern("src/sections/Experience.jsx", experience, /!experience\.company\.toUpperCase\(\)\.includes\(["']EPITECH EIP["']\)/, "Epitech EIP must not appear in the professional timeline");
 requirePattern("src/sections/Experience.jsx", experience, /academicExperience/, "academic project must remain visible separately");
 requirePattern("src/sections/Experience.jsx", experience, /Projet académique · Epitech/, "French academic-project label is missing");
 requirePattern("src/sections/Experience.jsx", experience, /Academic project · Epitech/, "English academic-project label is missing");
 requirePattern("src/sections/Experience.jsx", experience, /présentée séparément des expériences professionnelles/, "French employment boundary must be explicit");
 requirePattern("src/sections/Experience.jsx", experience, /shown separately from professional employment/, "English employment boundary must be explicit");
+rejectPattern("src/sections/Experience.jsx", experience, /toUpperCase\(\)\.includes\(["']EPITECH EIP["']\)/, "experience type must not be inferred from display text");
+
+const experienceTaxonomy = read("src/data/experienceTaxonomy.js");
+requirePattern("src/data/experienceTaxonomy.js", experienceTaxonomy, /"NEHS Digital — Projet DRIM-M": "professional"/, "NEHS Digital must be classified as professional");
+requirePattern("src/data/experienceTaxonomy.js", experienceTaxonomy, /GSOI: "professional"/, "GSOI must be classified as professional");
+requirePattern("src/data/experienceTaxonomy.js", experienceTaxonomy, /"ASTEK Digital Cloud Factory": "professional"/, "ASTEK must be classified as professional");
+requirePattern("src/data/experienceTaxonomy.js", experienceTaxonomy, /"EPITECH EIP": "academic"/, "Epitech EIP must be classified as academic");
 
 const recruiterProofPanel = read("src/components/RecruiterProofPanel.jsx");
 requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /Des preuves avant les buzzwords/, "French recruiter proof positioning is missing");
