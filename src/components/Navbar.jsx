@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navItems, profile } from "../data/content";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#0b0f17]/85 backdrop-blur-xl">
@@ -15,7 +24,7 @@ export default function Navbar() {
           <span className="hidden text-sm font-semibold text-slate-100 sm:inline">{profile.name}</span>
         </a>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
             <a key={item.href} href={item.href} className="nav-link">
               {item.label}
@@ -25,23 +34,24 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="rounded-lg border border-white/10 p-2 text-slate-300 md:hidden"
+          className="rounded-lg border border-white/10 p-2 text-slate-300 transition hover:border-white/20 hover:text-slate-100 md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
         </button>
       </nav>
 
       {open ? (
-        <div className="border-t border-white/5 bg-[#0b0f17] md:hidden">
+        <div id="mobile-navigation" className="border-t border-white/5 bg-[#0b0f17] md:hidden">
           <div className="site-shell flex flex-col py-4">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="py-3 text-sm text-slate-300"
+                className="rounded-lg px-2 py-3 text-sm text-slate-300 transition hover:bg-white/[0.03] hover:text-slate-100"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
