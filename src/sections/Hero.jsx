@@ -1,9 +1,7 @@
-import { ArrowRight, Download, Github, Linkedin, MapPin } from "lucide-react";
+import { ArrowRight, Github, Linkedin, MapPin, ShieldCheck } from "lucide-react";
 import { focusAreas, profile } from "../data/content";
 
 export default function Hero() {
-  const cvHref = `${import.meta.env.BASE_URL}CV_Bastien_Ladra.pdf`;
-
   return (
     <section id="top" className="relative overflow-hidden pt-32 sm:pt-36" aria-labelledby="hero-title">
       <div className="hero-grid" aria-hidden="true" />
@@ -39,8 +37,8 @@ export default function Hero() {
             <a href={profile.github} target="_blank" rel="noreferrer" className="button-secondary">
               <Github size={17} aria-hidden="true" /> GitHub
             </a>
-            <a href={cvHref} className="button-secondary" download>
-              <Download size={17} aria-hidden="true" /> CV
+            <a href="#credentials" className="button-secondary">
+              <ShieldCheck size={17} aria-hidden="true" /> Credentials
             </a>
             <a
               href={profile.linkedin}
