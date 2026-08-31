@@ -9,12 +9,13 @@
     :root{--navy:#10263d;--teal:#087e8b;--slate:#4a5568;--line:#d9e4ea;--soft:#eef4f7;--ink:#111827}
     *{box-sizing:border-box}body{margin:0;background:#f6f8fa;color:var(--ink);font:14px/1.35 Arial,Helvetica,sans-serif}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
     .toolbar{position:sticky;top:0;z-index:3;display:flex;justify-content:center;align-items:center;gap:10px;padding:12px;background:rgba(16,38,61,.94);backdrop-filter:blur(8px)}
-    .btn{border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 14px;background:#fff;color:var(--navy);font-weight:700;cursor:pointer}.btn.secondary{background:transparent;color:#fff}
+    .btn{border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 14px;background:#fff;color:var(--navy);font-weight:700;cursor:pointer}.btn.secondary{background:transparent;color:#fff}.btn.accent{background:#0d8793;color:#fff;border-color:#0d8793}
     .lang-switch{display:flex;border:1px solid rgba(255,255,255,.2);border-radius:8px;overflow:hidden}.lang-switch button{border:0;padding:8px 10px;background:transparent;color:#cbd5e1;font-weight:700;cursor:pointer}.lang-switch button.active{background:#fff;color:var(--navy)}
     main{width:min(210mm,calc(100% - 24px));min-height:297mm;margin:24px auto;background:#fff;padding:15mm 16mm 14mm;box-shadow:0 16px 60px rgba(15,23,42,.12)}
     h1{margin:0;color:var(--navy);font-size:30px;letter-spacing:.02em}.role{margin-top:2px;color:var(--teal);font-size:15px;font-weight:700}.contact{margin-top:6px;color:var(--slate);font-size:12px}.contact span+span:before{content:' | ';color:#94a3b8;margin:0 4px}.summary{margin:14px 0 8px;padding:10px 12px;background:var(--soft);border-radius:4px}
     h2{margin:11px 0 7px;padding-bottom:4px;border-bottom:2px solid var(--line);color:var(--navy);font-size:15px;text-transform:uppercase}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.metric{background:#f8fafc;text-align:center;padding:8px 5px}.metric strong{display:block;color:var(--navy);font-size:21px}.metric b{display:block;color:var(--teal);font-size:11px}.metric small{color:var(--slate);font-size:9px}
-    .project{margin-bottom:8px}.project-title{font-weight:700;font-size:14px}.project-title em{font-style:normal;color:var(--teal)}ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}li::marker{color:var(--teal)}.exp{display:grid;grid-template-columns:92px 1fr;gap:8px;margin:5px 0}.period{color:var(--teal);font-weight:700}.exp b{font-weight:700}.muted{color:var(--slate)}.skills{font-size:12.5px}.skills b{color:var(--navy)}footer{margin-top:16px;padding-top:7px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#7a8794;font-size:10px}
+    .project{margin-bottom:8px}.project-title{font-weight:700;font-size:14px}.project-title em{font-style:normal;color:var(--teal)}ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}li::marker{color:var(--teal)}.exp{display:grid;grid-template-columns:92px 1fr;gap:8px;margin:5px 0}.period{color:var(--teal);font-weight:700}.exp b{font-weight:700}.muted{color:var(--slate)}
+    .academic-label{margin:8px 0 4px;padding-top:7px;border-top:1px dashed var(--line);color:var(--teal);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.academic{margin-top:3px}.skills{font-size:12.5px}.skills b{color:var(--navy)}footer{margin-top:16px;padding-top:7px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#7a8794;font-size:10px}
     [hidden]{display:none!important}@media(max-width:760px){body{background:#fff}.toolbar{position:static;flex-wrap:wrap}.metrics{grid-template-columns:repeat(2,1fr)}main{width:100%;min-height:0;margin:0;padding:24px 20px;box-shadow:none}.exp{grid-template-columns:1fr;gap:1px}}
     @media print{@page{size:A4;margin:0}.toolbar{display:none}body{background:#fff}main{width:210mm;height:297mm;margin:0;padding:13mm 15mm 12mm;box-shadow:none}.summary,.metrics,.metric{print-color-adjust:exact;-webkit-print-color-adjust:exact}a{color:var(--teal)}}
   </style>
@@ -22,6 +23,7 @@
 <body>
   <div class="toolbar">
     <button class="btn" id="print-button" onclick="window.print()">Imprimer / enregistrer en PDF</button>
+    <a class="btn accent" id="pdf-link" href="Bastien_Ladra_CV_Public_FR_2026.pdf" download>Télécharger le CV PDF</a>
     <a class="btn secondary" id="back-link" href="./">Retour au portfolio</a>
     <div class="lang-switch" role="group" aria-label="Choisir la langue">
       <button type="button" data-switch="fr" class="active">FR</button><button type="button" data-switch="en">EN</button>
@@ -35,7 +37,11 @@
     <h2>Projets sélectionnés</h2>
     <section class="project"><div class="project-title">Secure Software Supply Chain Lab - <em>LUPISE / POEI</em> <span class="muted">| 2026</span></div><ul><li>CI multi-jobs avec Gitleaks, Ruff, Bandit, Pytest, pip-audit, CodeQL et quality gate avant build.</li><li>SBOM CycloneDX, provenance, Cosign, signature OCI keyless, GHCR et vérification avant déploiement.</li><li>OpenSSF Scorecard : 3,9 → 7,2/10 ; release v0.1.18 avec 0 vulnérabilité observée dans Ortelius après correction du lock pip.</li></ul></section>
     <section class="project"><div class="project-title">Secure API DevSecOps - <em>Projet public</em> <span class="muted">| 2026</span></div><ul><li>Chaîne FastAPI sécurisée de bout en bout : SAST, dépendances, conteneurs, DAST OWASP ZAP, IaC et Cloud Run.</li><li>SBOM, attestations, dependency locking par hashes, digest pinning et tests négatifs contrôlés des garde-fous CI.</li></ul><div class="muted">Source : <a href="https://github.com/bastien-ladra/secure-api-devsecops">github.com/bastien-ladra/secure-api-devsecops</a></div></section>
-    <h2>Expérience</h2><div class="exp"><div class="period">2023 - 2024</div><div><b>DevSecOps - NEHS / DRIM-M</b> <span class="muted">- Migration Bitbucket → GitLab, workflows CI/CD, incidents et optimisation GitLab.</span></div></div><div class="exp"><div class="period">2022 - 2023</div><div><b>ROSI - GSOI</b> <span class="muted">- Security Command Center, GCP, Cloud Armor, firewall, bastion, PKI, Terraform / Ansible.</span></div></div><div class="exp"><div class="period">2022</div><div><b>Watcher SecOps - ASTEK</b> <span class="muted">- Plateforme de supervision vulnérabilités, Vuls/Trivy, Python/API/UI, Docker/AWS.</span></div></div><div class="exp"><div class="period">2019 - 2022</div><div><b>Chef de projet / Dev - Epitech EIP</b> <span class="muted">- Équipe de 8, web/mobile, opérations DevOps et conteneurisation.</span></div></div>
+    <h2>Expérience professionnelle</h2>
+    <div class="exp"><div class="period">2023 - 2024</div><div><b>DevSecOps - NEHS / DRIM-M</b> <span class="muted">- Migration Bitbucket → GitLab, workflows CI/CD, incidents et optimisation GitLab.</span></div></div>
+    <div class="exp"><div class="period">2022 - 2023</div><div><b>ROSI - GSOI</b> <span class="muted">- Security Command Center, GCP, Cloud Armor, firewall, bastion, PKI, Terraform / Ansible.</span></div></div>
+    <div class="exp"><div class="period">2022</div><div><b>Watcher SecOps - ASTEK</b> <span class="muted">- Plateforme de supervision vulnérabilités, Vuls/Trivy, Python/API/UI, Docker/AWS.</span></div></div>
+    <div class="academic-label">Projet académique · cursus Epitech</div><div class="exp academic"><div class="period">2019 - 2022</div><div><b>Chef de projet / Dev - Epitech EIP</b> <span class="muted">- Projet mené pendant le cursus : équipe de 8, web/mobile, opérations DevOps et conteneurisation.</span></div></div>
     <h2>Compétences & certifications</h2><div class="skills"><b>DevSecOps :</b> GitHub Actions, GitLab CI/CD, CodeQL, Gitleaks, Bandit, pip-audit, OWASP ZAP, Dependabot. <b>Supply chain :</b> CycloneDX, Cosign, provenance, attestations, GHCR, OpenSSF Scorecard. <b>Cloud/IaC :</b> GCP, AWS, Terraform, Ansible, Cloud Armor, IAM, PKI/TLS. <b>Dev :</b> Python, Shell, C/C++, JavaScript, FastAPI, Flask, React.</div><div class="skills" style="margin-top:5px"><b>Formation :</b> Epitech - Titre d’Expert en Technologies de l’Information (2022) | POEI Consultant DevSecOps LUPISE (2026, 300 h) | EBIOS RM intro (2025) | Google Cybersécurité (2023) | SecNumacademie ANSSI. <b>Langues :</b> Français C2 | Anglais C1</div>
     <footer><span>Bastien Ladra - CV public 2026</span><span>Mis à jour en août 2026</span></footer>
   </main>
@@ -47,35 +53,45 @@
     <h2>Selected projects</h2>
     <section class="project"><div class="project-title">Secure Software Supply Chain Lab - <em>LUPISE / POEI</em> <span class="muted">| 2026</span></div><ul><li>Multi-job CI with Gitleaks, Ruff, Bandit, Pytest, pip-audit, CodeQL and a blocking quality gate before build.</li><li>CycloneDX SBOM, provenance, Cosign keyless OCI signing, GHCR and verification before deployment.</li><li>OpenSSF Scorecard improved from 3.9 to 7.2/10; release v0.1.18 showed 0 observed vulnerabilities in Ortelius after the pip lock fix.</li></ul></section>
     <section class="project"><div class="project-title">Secure API DevSecOps - <em>Public project</em> <span class="muted">| 2026</span></div><ul><li>End-to-end secured FastAPI delivery path covering SAST, dependencies, containers, OWASP ZAP DAST, IaC and Cloud Run.</li><li>SBOMs, attestations, hash-locked dependencies, digest pinning and controlled negative tests for CI safeguards.</li></ul><div class="muted">Source: <a href="https://github.com/bastien-ladra/secure-api-devsecops">github.com/bastien-ladra/secure-api-devsecops</a></div></section>
-    <h2>Experience</h2><div class="exp"><div class="period">2023 - 2024</div><div><b>DevSecOps - NEHS / DRIM-M</b> <span class="muted">- Bitbucket → GitLab migration, CI/CD workflows, incidents and GitLab optimization.</span></div></div><div class="exp"><div class="period">2022 - 2023</div><div><b>Information Systems Security Operations - GSOI</b> <span class="muted">- Security Command Center, GCP, Cloud Armor, firewall, bastion, PKI, Terraform / Ansible.</span></div></div><div class="exp"><div class="period">2022</div><div><b>Watcher SecOps - ASTEK</b> <span class="muted">- Vulnerability monitoring platform, Vuls/Trivy, Python/API/UI, Docker/AWS.</span></div></div><div class="exp"><div class="period">2019 - 2022</div><div><b>Project Lead / Developer - Epitech EIP</b> <span class="muted">- Eight-person team, web/mobile development, DevOps operations and containerization.</span></div></div>
+    <h2>Professional experience</h2>
+    <div class="exp"><div class="period">2023 - 2024</div><div><b>DevSecOps - NEHS / DRIM-M</b> <span class="muted">- Bitbucket → GitLab migration, CI/CD workflows, incidents and GitLab optimization.</span></div></div>
+    <div class="exp"><div class="period">2022 - 2023</div><div><b>Information Systems Security Operations - GSOI</b> <span class="muted">- Security Command Center, GCP, Cloud Armor, firewall, bastion, PKI, Terraform / Ansible.</span></div></div>
+    <div class="exp"><div class="period">2022</div><div><b>Watcher SecOps - ASTEK</b> <span class="muted">- Vulnerability monitoring platform, Vuls/Trivy, Python/API/UI, Docker/AWS.</span></div></div>
+    <div class="academic-label">Academic project · Epitech curriculum</div><div class="exp academic"><div class="period">2019 - 2022</div><div><b>Project Lead / Developer - Epitech EIP</b> <span class="muted">- Curriculum project: eight-person team, web/mobile development, DevOps operations and containerization.</span></div></div>
     <h2>Skills & credentials</h2><div class="skills"><b>DevSecOps:</b> GitHub Actions, GitLab CI/CD, CodeQL, Gitleaks, Bandit, pip-audit, OWASP ZAP, Dependabot. <b>Supply chain:</b> CycloneDX, Cosign, provenance, attestations, GHCR, OpenSSF Scorecard. <b>Cloud/IaC:</b> GCP, AWS, Terraform, Ansible, Cloud Armor, IAM, PKI/TLS. <b>Development:</b> Python, Shell, C/C++, JavaScript, FastAPI, Flask, React.</div><div class="skills" style="margin-top:5px"><b>Education:</b> Epitech - Expert in Information Technologies (2022) | POEI DevSecOps Consultant LUPISE (2026, 300 h) | EBIOS RM intro (2025) | Google Cybersecurity (2023) | ANSSI SecNumacademie. <b>Languages:</b> French C2 | English C1</div>
     <footer><span>Bastien Ladra - Public resume 2026</span><span>Updated August 2026</span></footer>
   </main>
 
   <script>
     const copy = {
-      fr: { print: "Imprimer / enregistrer en PDF", back: "Retour au portfolio", title: "Bastien Ladra — CV DevSecOps & Cybersécurité", description: "CV public de Bastien Ladra, ingénieur DevSecOps et cybersécurité." },
-      en: { print: "Print / save as PDF", back: "Back to portfolio", title: "Bastien Ladra — DevSecOps & Cybersecurity Resume", description: "Public resume of Bastien Ladra, DevSecOps and cybersecurity engineer." }
+      fr: { print: "Imprimer / enregistrer en PDF", pdf: "Télécharger le CV PDF", pdfFile: "Bastien_Ladra_CV_Public_FR_2026.pdf", back: "Retour au portfolio", title: "Bastien Ladra — CV DevSecOps & Cybersécurité", description: "CV public de Bastien Ladra, ingénieur DevSecOps et cybersécurité." },
+      en: { print: "Print / save as PDF", pdf: "Download resume PDF", pdfFile: "Bastien_Ladra_Resume_Public_EN_2026.pdf", back: "Back to portfolio", title: "Bastien Ladra — DevSecOps & Cybersecurity Resume", description: "Public resume of Bastien Ladra, DevSecOps and cybersecurity engineer." }
     };
     function setLanguage(language) {
       const lang = language === "en" ? "en" : "fr";
       document.documentElement.lang = lang;
-      document.querySelectorAll("[data-language]").forEach((node) => { node.hidden = node.dataset.language !== lang; });
-      document.querySelectorAll("[data-switch]").forEach((button) => button.classList.toggle("active", button.dataset.switch === lang));
+      document.querySelectorAll("main[data-language]").forEach((node) => { node.hidden = node.dataset.language !== lang; });
+      document.querySelectorAll("[data-switch]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.switch === lang);
+        button.setAttribute("aria-pressed", String(button.dataset.switch === lang));
+      });
       document.getElementById("print-button").textContent = copy[lang].print;
+      const pdf = document.getElementById("pdf-link");
+      pdf.textContent = copy[lang].pdf;
+      pdf.href = copy[lang].pdfFile;
+      pdf.setAttribute("download", copy[lang].pdfFile);
       document.getElementById("back-link").textContent = copy[lang].back;
-      document.getElementById("back-link").href = `./${lang === "en" ? "?lang=en" : ""}`;
       document.title = copy[lang].title;
       document.querySelector('meta[name="description"]').setAttribute("content", copy[lang].description);
       localStorage.setItem("portfolio-language", lang);
       const url = new URL(window.location.href);
       if (lang === "en") url.searchParams.set("lang", "en"); else url.searchParams.delete("lang");
-      history.replaceState({}, "", url);
+      if (url.protocol !== "file:") history.replaceState({}, "", url);
     }
-    document.querySelectorAll("[data-switch]").forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.switch)));
-    const requested = new URLSearchParams(window.location.search).get("lang");
-    const stored = localStorage.getItem("portfolio-language");
-    setLanguage(requested === "en" || requested === "fr" ? requested : stored === "en" ? "en" : "fr");
+    document.querySelectorAll("[data-switch]").forEach((button) => { button.addEventListener("click", () => setLanguage(button.dataset.switch)); });
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("lang");
+    setLanguage(requested === "en" ? "en" : (requested === "fr" ? "fr" : localStorage.getItem("portfolio-language")));
   </script>
 </body>
 </html>
