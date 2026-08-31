@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 export default function ProjectCard({ project, featured = false }) {
   return (
@@ -44,16 +44,26 @@ export default function ProjectCard({ project, featured = false }) {
             ))}
           </div>
 
-          {project.href ? (
-            <a
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
-            >
-              Inspect source and controls <ArrowUpRight size={15} aria-hidden="true" />
-            </a>
-          ) : null}
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+            {project.caseStudyHref ? (
+              <a
+                href={project.caseStudyHref}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
+              >
+                Read engineering case study <ArrowRight size={15} aria-hidden="true" />
+              </a>
+            ) : null}
+            {project.href ? (
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 transition hover:text-slate-200"
+              >
+                Inspect source <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
     </article>
