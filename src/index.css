@@ -21,7 +21,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 80% -10%, rgba(34, 211, 238, 0.08), transparent 30rem),
+    radial-gradient(circle at 82% -6%, rgba(34, 211, 238, 0.09), transparent 28rem),
+    radial-gradient(circle at 12% 40%, rgba(14, 165, 233, 0.035), transparent 34rem),
     #0b0f17;
 }
 
@@ -65,7 +66,7 @@ footer[id] {
   }
 
   .section-block {
-    @apply py-20 sm:py-24 lg:py-28;
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
   .eyebrow {
@@ -97,7 +98,7 @@ footer[id] {
   }
 
   .project-card {
-    @apply rounded-2xl border border-white/[0.08] bg-[#0f1622]/80 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/20 sm:p-8;
+    @apply rounded-3xl border border-white/[0.08] bg-[#0f1622]/80 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.16)] transition duration-300 hover:-translate-y-1 hover:border-cyan-300/20 sm:p-8;
   }
 
   .tech-pill {
@@ -115,6 +116,19 @@ footer[id] {
   .footer-link {
     @apply text-slate-500 transition hover:text-cyan-300;
   }
+
+  .hero-proof-panel {
+    @apply relative overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0d141f]/90 p-5 shadow-[0_28px_100px_rgba(0,0,0,0.28)] sm:p-6;
+  }
+
+  .proof-status {
+    @apply inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-300/10 bg-emerald-300/[0.035] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-emerald-200/70;
+  }
+
+  .proof-status-dot {
+    @apply h-1.5 w-1.5 rounded-full bg-emerald-300;
+    box-shadow: 0 0 14px rgba(110, 231, 183, 0.65);
+  }
 }
 
 .hero-grid {
@@ -125,20 +139,37 @@ footer[id] {
     linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black, transparent 82%);
+  mask-image: linear-gradient(to bottom, black, transparent 86%);
   pointer-events: none;
 }
 
 .hero-glow {
   position: absolute;
-  top: 3rem;
-  right: -9rem;
-  height: 28rem;
-  width: 28rem;
+  top: 1rem;
+  right: -8rem;
+  height: 31rem;
+  width: 31rem;
   border-radius: 9999px;
-  background: rgba(34, 211, 238, 0.08);
-  filter: blur(100px);
+  background: rgba(34, 211, 238, 0.09);
+  filter: blur(110px);
   pointer-events: none;
+}
+
+.hero-proof-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(103, 232, 249, 0.05), transparent 32%),
+    linear-gradient(rgba(148, 163, 184, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.025) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
+  mask-image: linear-gradient(to bottom right, black, transparent 78%);
+}
+
+.hero-proof-panel > * {
+  position: relative;
 }
 
 .text-gradient {
@@ -146,6 +177,12 @@ footer[id] {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+@media (max-width: 520px) {
+  .hero-proof-panel .contents + svg {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
