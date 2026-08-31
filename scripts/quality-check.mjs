@@ -51,8 +51,18 @@ checkHtml("public/case-study-secure-api.html");
 const indexPage = read("src/pages/Index.jsx");
 requirePattern("src/pages/Index.jsx", indexPage, /className=["']skip-link["']/, "missing keyboard skip link");
 requirePattern("src/pages/Index.jsx", indexPage, /id=["']main-content["']/, "missing main-content skip target");
+requirePattern("src/pages/Index.jsx", indexPage, /storedLanguage === ["']en["'] \? ["']en["'] : ["']fr["']/, "French must remain the default language");
+requirePattern("src/pages/Index.jsx", indexPage, /portfolio-language/, "language preference must be persisted");
+
+const navbar = read("src/components/Navbar.jsx");
+requirePattern("src/components/Navbar.jsx", navbar, /\["fr", "en"\]/, "FR/EN language selector is missing");
+requirePattern("src/components/Navbar.jsx", navbar, /aria-pressed/, "language selector must expose its active state");
 
 const content = read("src/data/content.js");
+requirePattern("src/data/content.js", content, /fr:\s*\{/, "French portfolio content is missing");
+requirePattern("src/data/content.js", content, /en:\s*\{/, "English portfolio content is missing");
+requirePattern("src/data/content.js", content, /Ingénieur DevSecOps & Cybersécurité/, "French recruiter positioning is missing");
+requirePattern("src/data/content.js", content, /DevSecOps & Cybersecurity Engineer/, "English recruiter positioning is missing");
 requirePattern("src/data/content.js", content, /caseStudyHref/, "flagship project must link to its case study");
 requirePattern("src/data/content.js", content, /7\.2\/10/, "verified OpenSSF evidence is missing");
 requirePattern(
@@ -69,7 +79,8 @@ rejectPattern(
 );
 
 const projectCard = read("src/components/ProjectCard.jsx");
-requirePattern("src/components/ProjectCard.jsx", projectCard, /Read engineering case study/, "case-study CTA is missing");
+requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.caseStudy/, "localized case-study CTA is missing");
+requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.challenge/, "localized project impact labels are missing");
 
 const publicResume = read("public/resume.html");
 rejectPattern("public/resume.html", publicResume, /06\s*77\s*60\s*26\s*07/, "public resume exposes a phone number");
