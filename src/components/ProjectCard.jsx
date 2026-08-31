@@ -62,7 +62,7 @@ export default function ProjectCard({ project, featured = false, language, copy 
                 </div>
               </div>
 
-              <div className="flex min-w-0 flex-1 items-center justify-start gap-2 lg:max-w-xl lg:justify-end">
+              <div className="flex min-w-0 flex-1 flex-wrap items-center justify-start gap-2 lg:max-w-xl lg:justify-end">
                 {proof.flow.map((stage, index) => (
                   <div key={stage} className="contents">
                     <div className="flex min-w-0 items-center gap-1.5 rounded-lg border border-white/[0.07] bg-[#0b111b]/80 px-2.5 py-2">
@@ -70,7 +70,7 @@ export default function ProjectCard({ project, featured = false, language, copy 
                       <span className="truncate font-mono text-[10px] text-slate-400">{stage}</span>
                     </div>
                     {index < proof.flow.length - 1 ? (
-                      <ArrowRight size={12} className="shrink-0 text-slate-700" aria-hidden="true" />
+                      <ArrowRight size={12} className="hidden shrink-0 text-slate-700 sm:block" aria-hidden="true" />
                     ) : null}
                   </div>
                 ))}
