@@ -1,8 +1,7 @@
 import { ArrowRight, FileText, Github, Linkedin, MapPin } from "lucide-react";
-import { profile, recruiterSignals } from "../data/content";
 
-export default function Hero() {
-  const resumeHref = `${import.meta.env.BASE_URL}resume.html`;
+export default function Hero({ profile, recruiterSignals, language, copy }) {
+  const resumeHref = `${import.meta.env.BASE_URL}resume.html?lang=${language}`;
 
   return (
     <section id="top" className="relative overflow-hidden pt-32 sm:pt-36" aria-labelledby="hero-title">
@@ -11,12 +10,12 @@ export default function Hero() {
 
       <div className="site-shell relative pb-20 pt-10 sm:pb-28 sm:pt-16">
         <div className="max-w-5xl">
-          <p className="eyebrow mb-5">DevSecOps & Cybersecurity Engineer · France</p>
+          <p className="eyebrow mb-5">{copy.hero.eyebrow}</p>
           <h1
             id="hero-title"
             className="max-w-5xl text-5xl font-semibold tracking-[-0.05em] text-slate-50 sm:text-6xl lg:text-7xl"
           >
-            I secure software delivery and <span className="text-gradient">cloud infrastructure.</span>
+            {copy.hero.headingBefore} <span className="text-gradient">{copy.hero.headingAccent}</span>
           </h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-400 sm:text-xl">
             {profile.tagline}
@@ -33,17 +32,12 @@ export default function Hero() {
 
           <div className="mt-9 flex flex-wrap gap-3">
             <a href="#projects" className="button-primary">
-              View selected work <ArrowRight size={17} aria-hidden="true" />
+              {copy.hero.selectedWork} <ArrowRight size={17} aria-hidden="true" />
             </a>
             <a href={resumeHref} className="button-secondary">
-              <FileText size={17} aria-hidden="true" /> Resume
+              <FileText size={17} aria-hidden="true" /> {copy.hero.resume}
             </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="button-secondary"
-            >
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="button-secondary">
               <Linkedin size={17} aria-hidden="true" /> LinkedIn
             </a>
             <a
@@ -51,7 +45,7 @@ export default function Hero() {
               target="_blank"
               rel="noreferrer"
               className="icon-link"
-              aria-label="Open GitHub profile"
+              aria-label={copy.hero.githubAria}
             >
               <Github size={18} aria-hidden="true" />
             </a>
