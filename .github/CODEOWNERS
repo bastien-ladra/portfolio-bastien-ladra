@@ -1,0 +1,11 @@
+# Portfolio ownership
+* @bastien-ladra
+
+# Delivery and dependency governance
+/.github/ @bastien-ladra
+/package.json @bastien-ladra
+/package-lock.json @bastien-ladra
+/scripts/ @bastien-ladra
+
+# Public recruiter-facing artifacts
+/public/ @bastien-ladra
