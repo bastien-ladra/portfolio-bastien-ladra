@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Contact from "../sections/Contact";
+import Credentials from "../sections/Credentials";
 import Evidence from "../sections/Evidence";
 import Experience from "../sections/Experience";
 import Expertise from "../sections/Expertise";
@@ -20,6 +21,7 @@ export default function Index() {
         <Evidence />
         <Expertise />
         <Experience />
+        <Credentials />
         <Research />
       </main>
       <Contact />
