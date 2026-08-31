@@ -32,7 +32,7 @@ export default function ProjectCard({ project, featured = false, language, copy 
             <a
               href={project.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="icon-link"
               aria-label={`${copy.sourceAria} ${project.title}`}
             >
@@ -111,7 +111,7 @@ export default function ProjectCard({ project, featured = false, language, copy 
               <a
                 href={project.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 transition hover:text-slate-200"
               >
                 {copy.source} <ArrowUpRight size={15} aria-hidden="true" />
