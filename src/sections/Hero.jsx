@@ -1,7 +1,9 @@
-import { ArrowRight, Github, Linkedin, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowRight, FileText, Github, Linkedin, MapPin, ShieldCheck } from "lucide-react";
 import { focusAreas, profile } from "../data/content";
 
 export default function Hero() {
+  const resumeHref = `${import.meta.env.BASE_URL}resume.html`;
+
   return (
     <section id="top" className="relative overflow-hidden pt-32 sm:pt-36" aria-labelledby="hero-title">
       <div className="hero-grid" aria-hidden="true" />
@@ -36,6 +38,9 @@ export default function Hero() {
             </a>
             <a href={profile.github} target="_blank" rel="noreferrer" className="button-secondary">
               <Github size={17} aria-hidden="true" /> GitHub
+            </a>
+            <a href={resumeHref} className="button-secondary">
+              <FileText size={17} aria-hidden="true" /> Resume
             </a>
             <a href="#credentials" className="button-secondary">
               <ShieldCheck size={17} aria-hidden="true" /> Credentials

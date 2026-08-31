@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bastien Ladra - CV public 2026</title>
+  <meta name="description" content="CV public 2026 de Bastien Ladra, Consultant DevSecOps et Ingénieur Cybersécurité." />
+  <style>
+    :root{--navy:#10263d;--teal:#087e8b;--slate:#4a5568;--line:#d9e4ea;--soft:#eef4f7;--ink:#111827}
+    *{box-sizing:border-box} body{margin:0;background:#f6f8fa;color:var(--ink);font:14px/1.35 Arial,Helvetica,sans-serif}
+    a{color:var(--teal);text-decoration:none} a:hover{text-decoration:underline}
+    .toolbar{position:sticky;top:0;z-index:3;display:flex;justify-content:center;gap:10px;padding:12px;background:rgba(16,38,61,.94);backdrop-filter:blur(8px)}
+    .btn{border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 14px;background:#fff;color:var(--navy);font-weight:700;cursor:pointer}.btn.secondary{background:transparent;color:#fff}
+    main{width:min(210mm,calc(100% - 24px));min-height:297mm;margin:24px auto;background:#fff;padding:15mm 16mm 14mm;box-shadow:0 16px 60px rgba(15,23,42,.12)}
+    h1{margin:0;color:var(--navy);font-size:30px;letter-spacing:.02em} .role{margin-top:2px;color:var(--teal);font-size:15px;font-weight:700}
+    .contact{margin-top:6px;color:var(--slate);font-size:12px}.contact span+span:before{content:' | ';color:#94a3b8;margin:0 4px}
+    .summary{margin:14px 0 8px;padding:10px 12px;background:var(--soft);border-radius:4px}
+    h2{margin:11px 0 7px;padding-bottom:4px;border-bottom:2px solid var(--line);color:var(--navy);font-size:15px;text-transform:uppercase}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.metric{background:#f8fafc;text-align:center;padding:8px 5px}.metric strong{display:block;color:var(--navy);font-size:21px}.metric b{display:block;color:var(--teal);font-size:11px}.metric small{color:var(--slate);font-size:9px}
+    .project{margin-bottom:8px}.project-title{font-weight:700;font-size:14px}.project-title em{font-style:normal;color:var(--teal)}ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}li::marker{color:var(--teal)}
+    .exp{display:grid;grid-template-columns:92px 1fr;gap:8px;margin:5px 0}.period{color:var(--teal);font-weight:700}.exp b{font-weight:700}.muted{color:var(--slate)}
+    .skills{font-size:12.5px}.skills b{color:var(--navy)}
+    footer{margin-top:16px;padding-top:7px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#7a8794;font-size:10px}
+    @media(max-width:760px){body{background:#fff}.toolbar{position:static}.metrics{grid-template-columns:repeat(2,1fr)}main{width:100%;min-height:0;margin:0;padding:24px 20px;box-shadow:none}.exp{grid-template-columns:1fr;gap:1px}}
+    @media print{@page{size:A4;margin:0}.toolbar{display:none}body{background:#fff}main{width:210mm;height:297mm;margin:0;padding:13mm 15mm 12mm;box-shadow:none}.summary{print-color-adjust:exact;-webkit-print-color-adjust:exact}.metrics,.metric{print-color-adjust:exact;-webkit-print-color-adjust:exact}a{color:var(--teal)}}
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">Imprimer / enregistrer en PDF</button>
+    <a class="btn secondary" href="./">Retour au portfolio</a>
+  </div>
+  <main>
+    <header>
+      <h1>BASTIEN LADRA</h1>
+      <div class="role">CONSULTANT DEVSECOPS | INGÉNIEUR CYBERSÉCURITÉ</div>
+      <div class="contact">
+        <span><a href="mailto:ladra.bastien@gmail.com">ladra.bastien@gmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/bastienladra">LinkedIn</a></span>
+        <span><a href="https://github.com/bastien-ladra">GitHub</a></span>
+        <span>France</span><span>Télétravail / présentiel</span>
+      </div>
+    </header>
+
+    <p class="summary">Ingénieur cybersécurité orienté DevSecOps : CI/CD sécurisée, software supply chain, cloud GCP/AWS et automatisation. En 2026, j’ai construit et validé des chaînes de livraison intégrant quality gates, SBOM, provenance, signatures, DAST et IaC sécurisée.</p>
+
+    <h2>Preuves d’ingénierie 2026</h2>
+    <div class="metrics">
+      <div class="metric"><strong>7,2/10</strong><b>OpenSSF Scorecard</b><small>depuis 3,9/10</small></div>
+      <div class="metric"><strong>0</strong><b>CVE observée</b><small>release v0.1.18 / Ortelius</small></div>
+      <div class="metric"><strong>7</strong><b>workflows sécurité</b><small>Secure API DevSecOps</small></div>
+      <div class="metric"><strong>300 h</strong><b>POEI DevSecOps</b><small>août - octobre 2026</small></div>
+    </div>
+
+    <h2>Projets sélectionnés</h2>
+    <section class="project">
+      <div class="project-title">Secure Software Supply Chain Lab - <em>LUPISE / POEI</em> <span class="muted">| 2026</span></div>
+      <ul>
+        <li>CI multi-jobs avec Gitleaks, Ruff, Bandit, Pytest, pip-audit, CodeQL et quality gate avant build.</li>
+        <li>SBOM CycloneDX, provenance, Cosign, signature OCI keyless, GHCR et vérification avant déploiement.</li>
+        <li>OpenSSF Scorecard : 3,9 → 7,2/10 ; release v0.1.18 avec 0 vulnérabilité observée dans Ortelius après correction du lock pip.</li>
+      </ul>
+    </section>
+    <section class="project">
+      <div class="project-title">Secure API DevSecOps - <em>Projet public</em> <span class="muted">| 2026</span></div>
+      <ul>
+        <li>Chaîne FastAPI sécurisée de bout en bout : SAST, dépendances, conteneurs, DAST OWASP ZAP, IaC et Cloud Run.</li>
+        <li>SBOM, attestations, dependency locking par hashes, digest pinning et tests négatifs contrôlés des garde-fous CI.</li>
+      </ul>
+      <div class="muted">Source : <a href="https://github.com/Bastien-Lup/secure-api-devsecops">github.com/Bastien-Lup/secure-api-devsecops</a></div>
+    </section>
+
+    <h2>Expérience</h2>
+    <div class="exp"><div class="period">2023 - 2024</div><div><b>DevSecOps - NEHS / DRIM-M</b> <span class="muted">- Migration Bitbucket → GitLab, workflows CI/CD, incidents et optimisation GitLab.</span></div></div>
+    <div class="exp"><div class="period">2022 - 2023</div><div><b>ROSI - GSOI</b> <span class="muted">- Security Command Center, GCP, Cloud Armor, firewall, bastion, PKI, Terraform / Ansible.</span></div></div>
+    <div class="exp"><div class="period">2022</div><div><b>Watcher SecOps - Astek</b> <span class="muted">- Plateforme de supervision vulnérabilités, Vuls/Trivy, Python/API/UI, Docker/AWS.</span></div></div>
+    <div class="exp"><div class="period">2019 - 2022</div><div><b>Chef de projet / Dev - Epitech EIP</b> <span class="muted">- Équipe de 8, web/mobile, opérations DevOps et conteneurisation.</span></div></div>
+
+    <h2>Compétences & credentials</h2>
+    <div class="skills"><b>DevSecOps :</b> GitHub Actions, GitLab CI/CD, CodeQL, Gitleaks, Bandit, pip-audit, OWASP ZAP, Dependabot. <b>Supply chain :</b> CycloneDX, Cosign, provenance, attestations, GHCR, OpenSSF Scorecard. <b>Cloud/IaC :</b> GCP, AWS, Terraform, Ansible, Cloud Armor, IAM, PKI/TLS. <b>Dev :</b> Python, Shell, C/C++, JavaScript, FastAPI, Flask, React.</div>
+    <div class="skills" style="margin-top:5px"><b>Formation :</b> Epitech - Titre d’Expert en Technologies de l’Information (2022) | POEI Consultant DevSecOps LUPISE (2026, 300 h) | EBIOS RM intro (2025) | Google Cybersécurité (2023) | SecNumacademie ANSSI. <b>Langues :</b> Français C2 | Anglais C1</div>
+
+    <footer><span>Bastien Ladra - CV public 2026</span><span>Mis à jour en août 2026</span></footer>
+  </main>
+</body>
+</html>
