@@ -44,19 +44,32 @@ jobs:
           from pathlib import Path
           from pypdf import PdfReader
 
-          paths = [
-              Path('public/Bastien_Ladra_CV_Public_FR_2026.pdf'),
-              Path('public/Bastien_Ladra_Resume_Public_EN_2026.pdf'),
-          ]
-          for path in paths:
-              if not path.read_bytes().startswith(b'%PDF-'):
-                  raise SystemExit(f'{path}: invalid PDF signature')
-              pages = len(PdfReader(path).pages)
+          expectations = {
+              Path('public/Bastien_Ladra_CV_Public_FR_2026.pdf'): [
+                  '3 expériences pro',
+                  'Projet académique',
+                  'Epitech',
+              ],
+              Path('public/Bastien_Ladra_Resume_Public_EN_2026.pdf'): [
+                  '3 professional roles',
+                  'Academic project',
+                  'Epitech',
+              ],
+          }
+
+          for path, required_text in expectations.items():
+              data = path.read_bytes()
+              if not data.startswith(b'%PDF-') or b'%%EOF' not in data[-1024:]:
+                  raise SystemExit(f'{path}: invalid PDF structure')
+              reader = PdfReader(path)
+              pages = len(reader.pages)
               if pages != 1:
                   raise SystemExit(f'{path}: expected 1 page, got {pages}')
-              if path.stat().st_size < 20_000:
-                  raise SystemExit(f'{path}: PDF is unexpectedly small')
-              print(f'{path}: 1 page, {path.stat().st_size} bytes')
+              text = '\n'.join(page.extract_text() or '' for page in reader.pages)
+              for expected in required_text:
+                  if expected not in text:
+                      raise SystemExit(f'{path}: missing expected text: {expected}')
+              print(f'{path}: 1 page, validated recruiter content, {path.stat().st_size} bytes')
           PY
 
       - name: Commit generated PDFs
