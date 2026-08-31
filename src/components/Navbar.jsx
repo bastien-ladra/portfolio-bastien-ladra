@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Download, Mail, Menu, X } from "lucide-react";
 
 export default function Navbar({ profile, navItems, language, onLanguageChange, copy }) {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef(null);
+  const mobileNavigationRef = useRef(null);
   const resumePdf =
     language === "fr" ? "Bastien_Ladra_CV_Public_FR_2026.pdf" : "Bastien_Ladra_Resume_Public_EN_2026.pdf";
   const resumePdfHref = `${import.meta.env.BASE_URL}${resumePdf}`;
@@ -11,12 +13,22 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
 
   useEffect(() => {
     const handleEscape = (event) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+      }
     };
 
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, []);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    window.requestAnimationFrame(() => {
+      mobileNavigationRef.current?.querySelector("a")?.focus();
+    });
+  }, [open]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#0b0f17]/85 backdrop-blur-xl">
@@ -77,10 +89,12 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
           </div>
 
           <button
+            ref={menuButtonRef}
             type="button"
             className="rounded-lg border border-white/10 p-2 text-slate-300 transition hover:border-white/20 hover:text-slate-100 lg:hidden"
             aria-label={open ? copy.closeMenu : copy.openMenu}
             aria-expanded={open}
+            aria-haspopup="true"
             aria-controls="mobile-navigation"
             onClick={() => setOpen((value) => !value)}
           >
@@ -90,7 +104,11 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
       </nav>
 
       {open ? (
-        <div id="mobile-navigation" className="border-t border-white/5 bg-[#0b0f17] lg:hidden">
+        <div
+          ref={mobileNavigationRef}
+          id="mobile-navigation"
+          className="border-t border-white/5 bg-[#0b0f17] lg:hidden"
+        >
           <div className="site-shell flex flex-col py-4">
             {navItems.map((item) => (
               <a

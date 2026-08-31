@@ -17,6 +17,11 @@ function requirePattern(path, content, pattern, message) {
   if (!pattern.test(content)) failures.push(`${path}: ${message}`);
 }
 
+function requireCount(path, content, pattern, minimum, message) {
+  const matches = content.match(pattern) ?? [];
+  if (matches.length < minimum) failures.push(`${path}: ${message}`);
+}
+
 function rejectPattern(path, content, pattern, message) {
   if (pattern.test(content)) failures.push(`${path}: ${message}`);
 }
@@ -82,17 +87,26 @@ requirePattern("src/components/Navbar.jsx", navbar, /aria-pressed/, "language se
 requirePattern("src/components/Navbar.jsx", navbar, /Bastien_Ladra_CV_Public_FR_2026\.pdf/, "French PDF resume CTA is missing");
 requirePattern("src/components/Navbar.jsx", navbar, /Bastien_Ladra_Resume_Public_EN_2026\.pdf/, "English PDF resume CTA is missing");
 requirePattern("src/components/Navbar.jsx", navbar, /download=\{resumePdf\}/, "persistent resume CTA must download the localized PDF");
+requirePattern("src/components/Navbar.jsx", navbar, /aria-haspopup=["']true["']/, "mobile menu trigger must expose popup semantics");
+requirePattern("src/components/Navbar.jsx", navbar, /menuButtonRef/, "mobile menu must retain a trigger focus reference");
+requirePattern("src/components/Navbar.jsx", navbar, /mobileNavigationRef/, "mobile menu must retain a navigation focus reference");
+requirePattern("src/components/Navbar.jsx", navbar, /requestAnimationFrame\(\(\) => menuButtonRef\.current\?\.focus\(\)\)/, "Escape must restore focus to the mobile menu trigger");
+requirePattern("src/components/Navbar.jsx", navbar, /querySelector\(["']a["']\)\?\.focus\(\)/, "opening the mobile menu must move focus into navigation");
 
 const hero = read("src/sections/Hero.jsx");
 requirePattern("src/sections/Hero.jsx", hero, /RecruiterProofPanel/, "hero must surface recruiter proof panel");
 requirePattern("src/sections/Hero.jsx", hero, /Télécharger le CV/, "French recruiter resume CTA is missing");
 requirePattern("src/sections/Hero.jsx", hero, /Download resume/, "English recruiter resume CTA is missing");
 requirePattern("src/sections/Hero.jsx", hero, /download=\{resumePdf\}/, "hero resume CTA must trigger a direct PDF download");
+requireCount("src/sections/Hero.jsx", hero, /target=["']_blank["']/g, 2, "expected external recruiter profile links are missing");
+requireCount("src/sections/Hero.jsx", hero, /rel=["']noopener noreferrer["']/g, 2, "external hero links must prevent opener access");
 
 const contact = read("src/sections/Contact.jsx");
 requirePattern("src/sections/Contact.jsx", contact, /profile\.email/, "contact section must expose the public email address");
 requirePattern("src/sections/Contact.jsx", contact, /Écrire par e-mail/, "French direct email CTA is missing");
 requirePattern("src/sections/Contact.jsx", contact, /Connect on LinkedIn/, "English LinkedIn CTA is missing");
+requireCount("src/sections/Contact.jsx", contact, /target=["']_blank["']/g, 3, "expected external contact links are missing");
+requireCount("src/sections/Contact.jsx", contact, /rel=["']noopener noreferrer["']/g, 3, "external contact links must prevent opener access");
 
 const experience = read("src/sections/Experience.jsx");
 requirePattern("src/sections/Experience.jsx", experience, /getExperienceKind/, "experience section must use explicit classification metadata");
@@ -141,6 +155,8 @@ requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.challenge/,
 requirePattern("src/components/ProjectCard.jsx", projectCard, /projectProofs/, "project cards must surface verified evidence");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /Private training repository|Dépôt de formation privé/, "private evidence boundary must be explicit");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /case-study-secure-api-fr|replace\(["']\.html["'],\s*["']-fr\.html["']\)/, "French case-study routing is missing");
+requireCount("src/components/ProjectCard.jsx", projectCard, /target=["']_blank["']/g, 2, "expected project source links are missing");
+requireCount("src/components/ProjectCard.jsx", projectCard, /rel=["']noopener noreferrer["']/g, 2, "external project links must prevent opener access");
 
 const projectProofs = read("src/data/projectProofs.js");
 requirePattern("src/data/projectProofs.js", projectProofs, /3,9 → 7,2/, "French OpenSSF proof is missing");

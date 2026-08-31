@@ -42,13 +42,13 @@ export default function Hero({ profile, recruiterSignals, language, copy }) {
               <a href="#projects" className="button-secondary">
                 {copy.hero.selectedWork} <ArrowRight size={17} aria-hidden="true" />
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="button-secondary">
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="button-secondary">
                 <Linkedin size={17} aria-hidden="true" /> LinkedIn
               </a>
               <a
                 href={profile.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="icon-link"
                 aria-label={copy.hero.githubAria}
               >
