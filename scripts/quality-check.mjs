@@ -78,6 +78,18 @@ rejectPattern("public/resume.html", publicResume, /33440|33240|Cubzac|Ambar[eè]
 const caseStudy = read("public/case-study-secure-api.html");
 requirePattern("public/case-study-secure-api.html", caseStudy, /What this project does not claim/, "case study must state limitations");
 requirePattern("public/case-study-secure-api.html", caseStudy, /Research question/, "case study must include the secure-MLOps research bridge");
+requirePattern(
+  "public/case-study-secure-api.html",
+  caseStudy,
+  /https:\/\/github\.com\/bastien-ladra\/secure-api-devsecops/,
+  "case study must link to the canonical source repository",
+);
+rejectPattern(
+  "public/case-study-secure-api.html",
+  caseStudy,
+  /github\.com\/Bastien-Lup\/secure-api-devsecops/,
+  "case study contains a stale pre-transfer repository URL",
+);
 
 if (failures.length) {
   console.error("Portfolio quality checks failed:\n");
