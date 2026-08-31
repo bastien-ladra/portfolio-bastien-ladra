@@ -1,6 +1,9 @@
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 
-export default function Contact({ profile, copy }) {
+export default function Contact({ profile, copy, language }) {
+  const emailLabel = language === "fr" ? "Écrire par e-mail" : "Email me";
+  const linkedinLabel = language === "fr" ? "Échanger sur LinkedIn" : "Connect on LinkedIn";
+
   return (
     <footer id="contact" className="section-block pb-10">
       <div className="site-shell">
@@ -14,10 +17,26 @@ export default function Contact({ profile, copy }) {
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
                 {copy.description}
               </p>
+              <a
+                href={`mailto:${profile.email}`}
+                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-cyan-200 transition hover:text-cyan-100"
+              >
+                <Mail size={15} aria-hidden="true" /> {profile.email}
+              </a>
             </div>
-            <a href={`mailto:${profile.email}`} className="button-primary whitespace-nowrap">
-              {copy.cta} <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
+            <div className="flex flex-wrap gap-3 lg:justify-end">
+              <a href={`mailto:${profile.email}`} className="button-primary whitespace-nowrap">
+                {emailLabel} <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="button-secondary whitespace-nowrap"
+              >
+                <Linkedin size={17} aria-hidden="true" /> {linkedinLabel}
+              </a>
+            </div>
           </div>
         </div>
 

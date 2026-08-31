@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { FileText, Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 
 export default function Navbar({ profile, navItems, language, onLanguageChange, copy }) {
   const [open, setOpen] = useState(false);
-  const resumeHref = `${import.meta.env.BASE_URL}resume.html?lang=${language}`;
+  const resumePdf =
+    language === "fr" ? "Bastien_Ladra_CV_Public_FR_2026.pdf" : "Bastien_Ladra_Resume_Public_EN_2026.pdf";
+  const resumePdfHref = `${import.meta.env.BASE_URL}${resumePdf}`;
+  const resumeLabel = language === "fr" ? "CV PDF" : "Resume PDF";
 
   useEffect(() => {
     const handleEscape = (event) => {
@@ -34,10 +37,11 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
           </div>
 
           <a
-            href={resumeHref}
+            href={resumePdfHref}
+            download={resumePdf}
             className="hidden items-center gap-1.5 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-2 text-xs font-semibold text-cyan-200 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.08] sm:inline-flex"
           >
-            <FileText size={14} aria-hidden="true" /> {copy.hero.resume}
+            <Download size={14} aria-hidden="true" /> {resumeLabel}
           </a>
 
           <div
@@ -89,11 +93,12 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
               </a>
             ))}
             <a
-              href={resumeHref}
+              href={resumePdfHref}
+              download={resumePdf}
               className="mt-2 inline-flex items-center gap-2 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-3 text-sm font-semibold text-cyan-200 sm:hidden"
               onClick={() => setOpen(false)}
             >
-              <FileText size={15} aria-hidden="true" /> {copy.hero.resume}
+              <Download size={15} aria-hidden="true" /> {resumeLabel}
             </a>
           </div>
         </div>

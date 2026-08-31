@@ -66,7 +66,7 @@ export default function Index() {
         />
         <Research research={content.research} copy={content.copy.research} />
       </main>
-      <Contact profile={content.profile} copy={content.copy.contact} />
+      <Contact profile={content.profile} copy={content.copy.contact} language={language} />
     </div>
   );
 }
