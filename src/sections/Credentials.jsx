@@ -1,16 +1,11 @@
 import { GraduationCap, Languages, ShieldCheck } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
-import { credentials, currentProgram, languages } from "../data/content";
 
-export default function Credentials() {
+export default function Credentials({ credentials, currentProgram, languages, copy }) {
   return (
     <section id="credentials" className="section-block">
       <div className="site-shell">
-        <SectionHeading
-          eyebrow="Credentials"
-          title="Current training and verified foundations."
-          description="A concise view of the formal training and certifications that support the engineering work shown above."
-        />
+        <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
         <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
           <article className="panel p-7 sm:p-9">
@@ -19,7 +14,7 @@ export default function Credentials() {
                 <ShieldCheck size={19} aria-hidden="true" />
               </span>
               <div>
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300/80">Current program</p>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300/80">{copy.currentProgram}</p>
                 <h3 className="mt-3 text-xl font-semibold text-slate-50">{currentProgram.title}</h3>
                 <p className="mt-1 text-sm text-slate-400">
                   {currentProgram.organization} · {currentProgram.period} · {currentProgram.duration}
@@ -32,7 +27,7 @@ export default function Credentials() {
           <article className="panel p-7 sm:p-9">
             <div className="flex items-center gap-3">
               <GraduationCap size={19} className="text-cyan-300" aria-hidden="true" />
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300/80">Education & certifications</p>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300/80">{copy.education}</p>
             </div>
             <div className="mt-6 space-y-5">
               {credentials.map((credential) => (
@@ -49,7 +44,7 @@ export default function Credentials() {
             <div className="mt-8 border-t border-white/[0.07] pt-6">
               <div className="flex items-center gap-3">
                 <Languages size={18} className="text-cyan-300" aria-hidden="true" />
-                <p className="text-sm font-semibold text-slate-200">Languages</p>
+                <p className="text-sm font-semibold text-slate-200">{copy.languages}</p>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {languages.map((language) => (
