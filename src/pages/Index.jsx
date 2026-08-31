@@ -1,5 +1,7 @@
 import Navbar from "../components/Navbar";
 import Contact from "../sections/Contact";
+import Credentials from "../sections/Credentials";
+import Evidence from "../sections/Evidence";
 import Experience from "../sections/Experience";
 import Expertise from "../sections/Expertise";
 import Hero from "../sections/Hero";
@@ -9,12 +11,17 @@ import Research from "../sections/Research";
 export default function Index() {
   return (
     <div className="min-h-screen bg-[#0b0f17] text-slate-100">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Projects />
+        <Evidence />
         <Expertise />
         <Experience />
+        <Credentials />
         <Research />
       </main>
       <Contact />
