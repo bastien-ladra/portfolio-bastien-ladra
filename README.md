@@ -1,66 +1,59 @@
-# Bastien Ladra — Engineering Portfolio
+# Bastien Ladra — Portfolio DevSecOps & Cybersécurité
 
-Public engineering portfolio focused on DevSecOps, cybersecurity, cloud security, software supply-chain integrity and a research direction toward secure MLOps / AI security.
+**Ingénieur DevSecOps & Cybersécurité · France**  
+Expérience chez **NEHS Digital, GSOI et ASTEK**, diplômé Epitech, avec un focus sur la CI/CD sécurisée, la sécurité cloud et la software supply chain.
 
-## Portfolio principles
+[**Voir le portfolio →**](https://bastien-ladra.github.io/portfolio-bastien-ladra/) · [CV public](https://bastien-ladra.github.io/portfolio-bastien-ladra/resume.html) · [LinkedIn](https://www.linkedin.com/in/bastienladra)
 
-- **Evidence first** — security claims are paired with implemented controls or measurable outcomes.
-- **Current positioning** — DevSecOps Consultant & Cybersecurity Engineer.
-- **Privacy aware** — the public resume excludes unnecessary personal data.
-- **Research bridge** — the portfolio connects secure software delivery with provenance and trust questions for ML/AI systems.
-- **Practice what is presented** — the portfolio CI applies least-privilege permissions, immutable action references and blocking quality checks.
+## Ce que le portfolio démontre
 
-## Featured engineering work
+- **Expérience de production** en DevSecOps, SecOps et sécurité cloud.
+- **Secure API DevSecOps** — projet public avec 7 workflows de sécurité, dépendances verrouillées par hash, CodeQL, Trivy, OWASP ZAP, Terraform, SBOM CycloneDX et attestations.
+- **Secure Software Supply Chain Lab** — travail POEI 2026 avec SBOM, provenance, Cosign, GHCR et OpenSSF Scorecard amélioré de **3,9/10 à 7,2/10**.
+- **FR / EN** — le portfolio, le CV public et l'étude de cas principale sont disponibles dans les deux langues.
+- **Preuves avant les claims** — les éléments publics sont reliés au code ou à des résultats vérifiés, et les limites sont indiquées explicitement.
 
-- **Secure API DevSecOps** — public reference implementation with SAST, dependency security, container controls, SBOM/attestations, IaC checks, GCP and OWASP ZAP DAST.
-  - Includes a dedicated engineering case study with threat/control mapping, delivery architecture, Cloud Run model, limitations and a Secure MLOps research bridge.
-- **Secure Software Supply Chain Lab** — 2026 POEI work covering CI quality gates, CycloneDX SBOM, provenance, Cosign signing, GHCR, OpenSSF Scorecard and Ortelius.
-- Professional cloud security automation and vulnerability monitoring experience.
+## À inspecter
 
-## Public artifacts
+### Secure API DevSecOps
 
-- `public/resume.html` — privacy-safe, printable public resume.
-- `public/case-study-secure-api.html` — evidence-backed Secure API engineering case study with technical visualizations.
+Projet public de référence : [github.com/bastien-ladra/secure-api-devsecops](https://github.com/bastien-ladra/secure-api-devsecops)
 
-## Stack
+- [Étude de cas — FR](https://bastien-ladra.github.io/portfolio-bastien-ladra/case-study-secure-api-fr.html)
+- [Engineering case study — EN](https://bastien-ladra.github.io/portfolio-bastien-ladra/case-study-secure-api.html)
+- Chaîne de contrôle : code → dépendances → conteneur → publication → infrastructure → runtime.
+- Limites et compromis documentés plutôt que masqués.
 
-- React 18
-- Vite 4
-- Tailwind CSS 3
-- Lucide React
-- GitHub Pages
+### Secure Software Supply Chain Lab
 
-## Structure
+Projet de formation POEI privé. Les résultats affichés publiquement restent limités aux preuves déjà vérifiées : OpenSSF Scorecard, SBOM, provenance, signature et vérification avant déploiement.
 
-- `src/components/` reusable UI
-- `src/data/` portfolio content and evidence
-- `src/sections/` page sections
-- `src/pages/Index.jsx` page composition
-- `scripts/` deterministic repository quality checks
-- `public/` recruiter-facing static artifacts
+## Pour les recruteurs
 
-## Development
+La page d'accueil est volontairement courte et orientée lecture rapide : **profil → projets sélectionnés → expérience → expertise → formation → contact**. Les détails techniques restent derrière les études de cas et les dépôts publics afin de ne pas transformer la homepage en documentation technique.
+
+## Engineering notes
+
+Le portfolio est lui-même traité comme un petit produit logiciel :
+
+- React 18 + Vite 4 + Tailwind CSS 3 ;
+- GitHub Pages ;
+- qualité, SEO et build vérifiés par CI ;
+- vérification post-build du CSS Tailwind généré ;
+- permissions GitHub Actions limitées et actions épinglées par SHA ;
+- contrôle des régressions de confidentialité du CV public ;
+- sitemap, robots.txt, JSON-LD et contenu bilingue validés automatiquement.
+
+### Développement local
 
 ```bash
 npm ci
 npm run dev
-npm run quality
-npm run build
 npm run check
 ```
 
-`npm run check` is the local equivalent of the pull-request gate: static portfolio-quality assertions followed by the production Vite build.
+`npm run check` exécute les contrôles de contenu/privacité, le contrôle SEO, le build Vite puis la vérification de l'artefact CSS généré.
 
-## CI/CD controls
+---
 
-Pull requests and pushes to `master` run the quality gate and production build. Only successful pushes deploy to GitHub Pages.
-
-The workflow uses:
-
-- read-only repository permissions for the build job;
-- Pages + OIDC permissions scoped only to deployment;
-- `persist-credentials: false` during checkout;
-- GitHub Actions pinned to immutable commit SHAs;
-- Node.js 22 on Ubuntu 24.04;
-- blocking checks for required public artifacts, basic accessibility/metadata invariants, internal anchors, privacy-sensitive resume regressions and placeholder content;
-- Dependabot for npm and GitHub Actions maintenance.
+**English summary:** DevSecOps & Cybersecurity Engineer portfolio focused on secure CI/CD, cloud security and software supply-chain integrity. The full portfolio, public resume and flagship engineering case study are available in English from the language switch on the live site.
