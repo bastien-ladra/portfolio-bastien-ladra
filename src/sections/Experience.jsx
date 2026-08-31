@@ -1,18 +1,26 @@
 import { GraduationCap } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
+import { getExperienceKind } from "../data/experienceTaxonomy";
 
 export default function Experience({ experiences, copy, language }) {
   const professionalExperiences = experiences.filter(
-    (experience) => !experience.company.toUpperCase().includes("EPITECH EIP"),
+    (experience) => getExperienceKind(experience.company) === "professional",
   );
-  const academicExperience = experiences.find((experience) =>
-    experience.company.toUpperCase().includes("EPITECH EIP"),
+  const academicExperience = experiences.find(
+    (experience) => getExperienceKind(experience.company) === "academic",
+  );
+  const unclassifiedExperiences = experiences.filter(
+    (experience) => getExperienceKind(experience.company) === null,
   );
   const academicLabel = language === "fr" ? "Projet académique · Epitech" : "Academic project · Epitech";
   const academicContext =
     language === "fr"
       ? "Expérience de projet menée pendant le cursus Epitech — présentée séparément des expériences professionnelles."
       : "Project experience completed during the Epitech curriculum — shown separately from professional employment.";
+
+  if (unclassifiedExperiences.length > 0) {
+    console.warn("Unclassified portfolio experience:", unclassifiedExperiences.map((experience) => experience.company));
+  }
 
   return (
     <section id="experience" className="section-block">
