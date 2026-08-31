@@ -20,7 +20,7 @@ jobs:
       - name: Create isolated PDF environment
         run: |
           python3 -m venv .resume-venv
-          .resume-venv/bin/pip install --disable-pip-version-check 'weasyprint==68.0'
+          .resume-venv/bin/pip install --disable-pip-version-check 'weasyprint==68.0' pypdf
 
       - name: Build localized one-page PDFs
         run: |
@@ -40,8 +40,24 @@ jobs:
           PY
           .resume-venv/bin/weasyprint public/resume.html public/Bastien_Ladra_CV_Public_FR_2026.pdf
           .resume-venv/bin/weasyprint /tmp/resume-en.html public/Bastien_Ladra_Resume_Public_EN_2026.pdf
-          test "$(pdfinfo public/Bastien_Ladra_CV_Public_FR_2026.pdf | awk '/^Pages:/ {print $2}')" = "1"
-          test "$(pdfinfo public/Bastien_Ladra_Resume_Public_EN_2026.pdf | awk '/^Pages:/ {print $2}')" = "1"
+          .resume-venv/bin/python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          paths = [
+              Path('public/Bastien_Ladra_CV_Public_FR_2026.pdf'),
+              Path('public/Bastien_Ladra_Resume_Public_EN_2026.pdf'),
+          ]
+          for path in paths:
+              if not path.read_bytes().startswith(b'%PDF-'):
+                  raise SystemExit(f'{path}: invalid PDF signature')
+              pages = len(PdfReader(path).pages)
+              if pages != 1:
+                  raise SystemExit(f'{path}: expected 1 page, got {pages}')
+              if path.stat().st_size < 20_000:
+                  raise SystemExit(f'{path}: PDF is unexpectedly small')
+              print(f'{path}: 1 page, {path.stat().st_size} bytes')
+          PY
 
       - name: Commit generated PDFs
         run: |
