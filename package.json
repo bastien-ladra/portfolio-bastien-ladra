@@ -3,7 +3,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "quality": "node scripts/quality-check.mjs",
     "build": "vite build",
+    "check": "npm run quality && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
