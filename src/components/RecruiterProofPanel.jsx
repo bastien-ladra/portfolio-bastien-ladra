@@ -41,7 +41,7 @@ export default function RecruiterProofPanel({ recruiterSignals, language }) {
 
       <div className="mt-6 border-t border-white/[0.07] pt-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">{copy.delivery}</p>
-        <div className="mt-4 flex items-center gap-2 overflow-hidden">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:items-center">
           {copy.stages.map((stage, index) => (
             <div key={stage} className="contents">
               <div className="flex min-w-0 flex-1 items-center gap-2 rounded-lg border border-cyan-300/10 bg-cyan-300/[0.035] px-2.5 py-2">
@@ -49,7 +49,7 @@ export default function RecruiterProofPanel({ recruiterSignals, language }) {
                 <span className="truncate font-mono text-[10px] text-slate-300">{stage}</span>
               </div>
               {index < copy.stages.length - 1 ? (
-                <ArrowRight size={12} className="shrink-0 text-slate-700" aria-hidden="true" />
+                <ArrowRight size={12} className="hidden shrink-0 text-slate-700 sm:block" aria-hidden="true" />
               ) : null}
             </div>
           ))}
