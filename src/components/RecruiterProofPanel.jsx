@@ -6,6 +6,7 @@ export default function RecruiterProofPanel({ recruiterSignals, language }) {
       ? {
           eyebrow: "Profil en bref",
           title: "Des preuves avant les buzzwords.",
+          status: "vérifié",
           delivery: "Chaîne de confiance",
           stages: ["Code", "CI/CD", "Artefact", "Cloud"],
           footer: "Expérience production + projets publics inspectables",
@@ -13,6 +14,7 @@ export default function RecruiterProofPanel({ recruiterSignals, language }) {
       : {
           eyebrow: "At a glance",
           title: "Evidence before buzzwords.",
+          status: "verified",
           delivery: "Delivery trust path",
           stages: ["Code", "CI/CD", "Artifact", "Cloud"],
           footer: "Production experience + inspectable public engineering",
@@ -26,7 +28,7 @@ export default function RecruiterProofPanel({ recruiterSignals, language }) {
           <h2 className="mt-3 text-xl font-semibold tracking-tight text-slate-50">{copy.title}</h2>
         </div>
         <span className="proof-status" aria-hidden="true">
-          <span className="proof-status-dot" /> verified
+          <span className="proof-status-dot" /> {copy.status}
         </span>
       </div>
 
