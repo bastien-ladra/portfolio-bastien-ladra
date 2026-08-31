@@ -1,16 +1,30 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FlaskConical } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
-import { researchTopics } from "../data/content";
+import { researchQuestion, researchTopics } from "../data/content";
 
 export default function Research() {
   return (
     <section id="research" className="section-block border-y border-white/5 bg-white/[0.015]">
       <div className="site-shell">
         <SectionHeading
-          eyebrow="Current direction"
+          eyebrow="Research direction"
           title="Extending secure software thinking toward AI systems."
-          description="I am progressively connecting my work on secure delivery and software supply chains with ML and AI security, especially provenance, pipeline security and trustworthy deployment."
+          description="The direction is deliberately grounded in engineering practice: provenance, pipeline integrity, deployment trust and measurable security controls for ML and AI systems."
         />
+
+        <div className="mb-5 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.04] p-7 sm:p-9">
+          <div className="flex items-start gap-4">
+            <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/[0.05] text-cyan-300">
+              <FlaskConical size={19} aria-hidden="true" />
+            </span>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300/80">Current research question</p>
+              <p className="mt-4 max-w-4xl text-lg font-medium leading-8 text-slate-100 sm:text-xl">
+                {researchQuestion}
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="panel p-7 sm:p-9">
@@ -22,7 +36,7 @@ export default function Research() {
                     {index + 1}
                   </span>
                   <span className="text-sm font-medium text-slate-200">{step}</span>
-                  {index < list.length - 1 ? <ArrowRight size={15} className="ml-auto text-slate-600" /> : null}
+                  {index < list.length - 1 ? <ArrowRight size={15} className="ml-auto text-slate-600" aria-hidden="true" /> : null}
                 </div>
               ))}
             </div>
