@@ -6,7 +6,11 @@ export default function ProjectCard({ project, featured = false, language, copy 
     [copy.approach, "approach"],
     [copy.outcome, "outcome"],
   ];
-  const caseStudyHref = project.caseStudyHref ? `${project.caseStudyHref}?lang=${language}` : null;
+  const caseStudyHref = project.caseStudyHref
+    ? language === "fr"
+      ? project.caseStudyHref.replace(".html", "-fr.html")
+      : project.caseStudyHref
+    : null;
 
   return (
     <article className={`project-card ${featured ? "lg:col-span-2" : ""}`}>
