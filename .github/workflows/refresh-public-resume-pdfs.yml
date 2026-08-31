@@ -1,0 +1,56 @@
+name: Refresh public resume PDFs
+
+on:
+  push:
+    branches:
+      - fix/public-resume-credibility
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Create isolated PDF environment
+        run: |
+          python3 -m venv .resume-venv
+          .resume-venv/bin/pip install --disable-pip-version-check 'weasyprint==68.0'
+
+      - name: Build localized one-page PDFs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('public/resume.html').read_text(encoding='utf-8')
+          english = source.replace(
+              '<main data-language="fr">',
+              '<main data-language="fr" hidden>',
+              1,
+          ).replace(
+              '<main data-language="en" hidden>',
+              '<main data-language="en">',
+              1,
+          )
+          Path('/tmp/resume-en.html').write_text(english, encoding='utf-8')
+          PY
+          .resume-venv/bin/weasyprint public/resume.html public/Bastien_Ladra_CV_Public_FR_2026.pdf
+          .resume-venv/bin/weasyprint /tmp/resume-en.html public/Bastien_Ladra_Resume_Public_EN_2026.pdf
+          test "$(pdfinfo public/Bastien_Ladra_CV_Public_FR_2026.pdf | awk '/^Pages:/ {print $2}')" = "1"
+          test "$(pdfinfo public/Bastien_Ladra_Resume_Public_EN_2026.pdf | awk '/^Pages:/ {print $2}')" = "1"
+
+      - name: Commit generated PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/Bastien_Ladra_CV_Public_FR_2026.pdf public/Bastien_Ladra_Resume_Public_EN_2026.pdf
+          if git diff --cached --quiet; then
+            echo "Public resume PDFs are already current"
+            exit 0
+          fi
+          git commit -m "docs: align public PDFs with experience boundaries"
+          git push
