@@ -1,8 +1,9 @@
 export const profile = {
   name: "Bastien Ladra",
   role: "Cybersecurity & DevSecOps Engineer",
+  credential: "Epitech PGE graduate",
   tagline:
-    "I design secure cloud infrastructure and software delivery pipelines with security integrated from code to deployment.",
+    "I design and validate secure cloud and software delivery systems, with controls spanning code, dependencies, containers, infrastructure and runtime.",
   location: "France",
   email: "ladra.bastien@gmail.com",
   github: "https://github.com/bastien-ladra",
@@ -11,6 +12,7 @@ export const profile = {
 
 export const navItems = [
   { label: "Projects", href: "#projects" },
+  { label: "Evidence", href: "#evidence" },
   { label: "Expertise", href: "#expertise" },
   { label: "Experience", href: "#experience" },
   { label: "Research", href: "#research" },
@@ -24,12 +26,35 @@ export const focusAreas = [
   "Infrastructure as Code",
 ];
 
+export const engineeringEvidence = [
+  {
+    value: "7",
+    label: "CI/CD workflows",
+    detail: "CI, CodeQL, container security, DAST, dependency review, IaC and publishing.",
+  },
+  {
+    value: "SBOM",
+    label: "Artifact provenance",
+    detail: "Container SBOM generation and build attestations for software supply-chain evidence.",
+  },
+  {
+    value: "ZAP",
+    label: "Runtime validation",
+    detail: "OWASP ZAP baseline scanning and an explicit baseline policy integrated into CI.",
+  },
+  {
+    value: "GCP",
+    label: "Hardened deployment",
+    detail: "Terraform-managed Cloud Run deployment with digest-pinned container images.",
+  },
+];
+
 export const projects = [
   {
     title: "Secure API DevSecOps",
-    type: "Flagship engineering project",
+    type: "Flagship public engineering project",
     description:
-      "A security-focused FastAPI reference project that integrates controls across source code, dependencies, containers, infrastructure and deployment.",
+      "A security-focused FastAPI reference implementation that treats security as a delivery-system property rather than a final scanning step.",
     technologies: [
       "FastAPI",
       "Docker",
@@ -43,9 +68,9 @@ export const projects = [
     ],
     highlights: [
       "SAST and dependency security gates",
-      "Container security and supply-chain attestations",
-      "DAST with OWASP ZAP",
-      "Terraform security checks and hardened Cloud Run deployment",
+      "Container security, SBOM generation and attestations",
+      "DAST with OWASP ZAP and an explicit baseline policy",
+      "Terraform checks and hardened Cloud Run deployment",
     ],
     href: "https://github.com/Bastien-Lup/secure-api-devsecops",
   },
@@ -138,6 +163,9 @@ export const experiences = [
     items: ["React", "React Native", "GitLab", "Docker", "Project coordination"],
   },
 ];
+
+export const researchQuestion =
+  "How can software supply-chain guarantees be extended to models, datasets and ML pipelines while remaining practical for engineering teams?";
 
 export const researchTopics = [
   "Secure software supply chains",
