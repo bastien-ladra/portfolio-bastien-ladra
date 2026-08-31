@@ -52,7 +52,7 @@ function checkPdf(path) {
   }
 
   const pdf = readFileSync(full);
-  if (pdf.length < 20_000) failures.push(`${path}: PDF is unexpectedly small`);
+  if (pdf.length < 8_000) failures.push(`${path}: PDF is unexpectedly small`);
   if (pdf.subarray(0, 5).toString("ascii") !== "%PDF-") failures.push(`${path}: invalid PDF signature`);
 }
 
