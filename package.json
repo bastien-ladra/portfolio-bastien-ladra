@@ -5,7 +5,8 @@
     "dev": "vite",
     "quality": "node scripts/quality-check.mjs",
     "build": "vite build",
-    "check": "npm run quality && npm run build",
+    "verify-build": "node scripts/verify-build.mjs",
+    "check": "npm run quality && npm run build && npm run verify-build",
     "preview": "vite preview"
   },
   "dependencies": {

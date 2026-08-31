@@ -72,7 +72,7 @@ export const projects = [
       "DAST with OWASP ZAP and an explicit baseline policy",
       "Terraform checks and hardened Cloud Run deployment",
     ],
-    href: "https://github.com/Bastien-Lup/secure-api-devsecops",
+    href: "https://github.com/bastien-ladra/secure-api-devsecops",
     caseStudyHref: `${import.meta.env.BASE_URL}case-study-secure-api.html`,
   },
   {

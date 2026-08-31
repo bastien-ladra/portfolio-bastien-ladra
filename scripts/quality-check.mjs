@@ -55,6 +55,18 @@ requirePattern("src/pages/Index.jsx", indexPage, /id=["']main-content["']/, "mis
 const content = read("src/data/content.js");
 requirePattern("src/data/content.js", content, /caseStudyHref/, "flagship project must link to its case study");
 requirePattern("src/data/content.js", content, /7\.2\/10/, "verified OpenSSF evidence is missing");
+requirePattern(
+  "src/data/content.js",
+  content,
+  /https:\/\/github\.com\/bastien-ladra\/secure-api-devsecops/,
+  "flagship project must use the canonical repository URL",
+);
+rejectPattern(
+  "src/data/content.js",
+  content,
+  /github\.com\/Bastien-Lup\/secure-api-devsecops/,
+  "stale pre-transfer repository URL detected",
+);
 
 const projectCard = read("src/components/ProjectCard.jsx");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /Read engineering case study/, "case-study CTA is missing");
