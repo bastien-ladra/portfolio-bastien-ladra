@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta name="color-scheme" content="dark" />
+  <title>Secure API DevSecOps — Engineering Case Study | Bastien Ladra</title>
+  <meta name="description" content="Engineering case study of a FastAPI DevSecOps reference project covering secure CI, software supply chain, containers, Terraform, GCP Cloud Run and OWASP ZAP DAST." />
+  <style>
+    :root{--bg:#0b0f17;--panel:#101722;--panel2:#0d131d;--ink:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.08);--cyan:#67e8f9;--green:#86efac;--amber:#fcd34d;--red:#fda4af;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}code{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#bae6fd}.shell{width:min(var(--max),calc(100% - 32px));margin:auto}.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(11,15,23,.92);backdrop-filter:blur(12px)}.topbar .shell{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}.brand{font-weight:750;color:#fff}.nav{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}.button{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#111b28;color:#e2e8f0;font-weight:700}.button.primary{border-color:rgba(103,232,249,.25);background:rgba(103,232,249,.1);color:var(--cyan)}.hero{position:relative;overflow:hidden;padding:88px 0 70px}.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(103,232,249,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(103,232,249,.035) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent)}.hero>*{position:relative}.eyebrow,.kicker{font:700 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}h1{max-width:900px;margin:16px 0 20px;font-size:clamp(44px,7vw,78px);line-height:1.02;letter-spacing:-.055em}h2{margin:0 0 12px;font-size:clamp(28px,4vw,42px);letter-spacing:-.035em}h3{margin:0 0 8px;font-size:18px}.lead{max-width:800px;color:#b7c3d4;font-size:19px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:48px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line)}.metric{background:var(--panel2);padding:20px}.metric strong{display:block;font-size:27px;letter-spacing:-.04em}.metric span{color:var(--muted);font-size:12px}.section{padding:72px 0;border-top:1px solid var(--line)}.heading{display:grid;grid-template-columns:.7fr 1.3fr;gap:28px;margin-bottom:30px}.heading p{margin:0;color:var(--muted);max-width:680px}.panel{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:24px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.flow{display:grid;grid-template-columns:repeat(7,minmax(105px,1fr));gap:9px;align-items:stretch;overflow-x:auto;padding-bottom:5px}.node{min-width:105px;border:1px solid rgba(103,232,249,.15);border-radius:13px;padding:16px 12px;background:linear-gradient(180deg,rgba(103,232,249,.06),rgba(255,255,255,.015));text-align:center}.node b{display:block;color:#e2e8f0;font-size:13px}.node small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.arrow{display:none}.diagram-caption{margin:12px 0 0;color:var(--muted);font-size:12px}.matrix{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px}.matrix th,.matrix td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}.matrix th{color:#cbd5e1;background:#111a26;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.matrix td{color:#aebccd}.matrix tr:last-child td{border-bottom:0}.status{white-space:nowrap;font-weight:800;font-size:12px}.implemented{color:var(--green)}.partial{color:var(--amber)}.gap{color:var(--red)}.source{display:inline-block;margin-top:7px;font-size:12px}.source:before{content:"↗ ";}.control-list{display:grid;gap:12px}.control{display:grid;grid-template-columns:120px 1fr;gap:15px;padding:15px;border:1px solid var(--line);border-radius:12px;background:#0d141e}.control strong{color:var(--cyan);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.control p{margin:0;color:#b4c0cf}.cloud{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center}.cloud-box{padding:22px;border:1px solid var(--line);border-radius:14px;background:#0d141e;text-align:center}.cloud-box b{display:block}.cloud-box small{color:var(--muted)}.chev{font-size:26px;color:#475569}.experiment{border-left:3px solid var(--cyan);padding:2px 0 2px 18px}.experiment p{margin:4px 0;color:#b4c0cf}.tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.tag{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:#aab8ca;background:#0d141e;font:11px ui-monospace,SFMono-Regular,Menlo,monospace}.bridge{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch}.bridge-col{border:1px solid var(--line);border-radius:14px;padding:22px;background:#0d141e}.bridge-col ul{margin:10px 0 0;padding-left:20px;color:#b4c0cf}.bridge-arrow{align-self:center;color:var(--cyan);font-size:28px}.note{padding:16px 18px;border:1px solid rgba(252,211,77,.18);background:rgba(252,211,77,.04);border-radius:12px;color:#d6c78d}.footer{padding:40px 0 60px;color:#64748b;font-size:12px}.skip{position:absolute;left:-9999px;top:10px}.skip:focus{left:10px;z-index:100;background:#fff;color:#0f172a;padding:10px;border-radius:7px}
+    @media(max-width:900px){.metrics{grid-template-columns:repeat(2,1fr)}.heading{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.cloud{grid-template-columns:1fr}.chev{transform:rotate(90deg);text-align:center}.bridge{grid-template-columns:1fr}.bridge-arrow{transform:rotate(90deg);text-align:center}.flow{grid-template-columns:repeat(7,150px)}}
+    @media(max-width:620px){.nav{display:none}.hero{padding-top:62px}.metrics,.grid2{grid-template-columns:1fr}.matrix{font-size:12px}.matrix th,.matrix td{padding:10px 8px}.control{grid-template-columns:1fr}.shell{width:min(var(--max),calc(100% - 22px))}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to case study</a>
+  <header class="topbar">
+    <div class="shell">
+      <a class="brand" href="./">Bastien Ladra</a>
+      <nav class="nav" aria-label="Case study navigation">
+        <a href="#system">System</a><a href="#threats">Threats</a><a href="#controls">Controls</a><a href="#cloud">Cloud</a><a href="#research">Research bridge</a>
+      </nav>
+      <a class="button" href="https://github.com/Bastien-Lup/secure-api-devsecops" target="_blank" rel="noreferrer">Source repository ↗</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell">
+        <p class="eyebrow">Engineering case study · public reference implementation</p>
+        <h1>Secure API DevSecOps</h1>
+        <p class="lead">A FastAPI reference project designed to test a simple idea: security should be an enforceable property of the delivery system, not a final scanner added before release.</p>
+        <div class="hero-actions"><a class="button primary" href="#system">Explore the delivery system</a><a class="button" href="./">Back to portfolio</a></div>
+        <div class="metrics" aria-label="Project evidence summary">
+          <div class="metric"><strong>7</strong><span>specialized GitHub Actions workflows</span></div>
+          <div class="metric"><strong>SBOM</strong><span>CycloneDX generation + attestation</span></div>
+          <div class="metric"><strong>DAST</strong><span>OWASP ZAP baseline with policy file</span></div>
+          <div class="metric"><strong>GCP</strong><span>Terraform-managed Cloud Run target</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="system">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">01 · System model</p><h2>Security follows the artifact.</h2></div><p>The project separates controls by lifecycle stage so a reviewer can trace what protects source, dependencies, containers, infrastructure, publication and runtime behavior. The API stays deliberately small; the delivery system is the engineering subject.</p></div>
+        <div class="panel" role="img" aria-label="Delivery flow from source change through CI checks, container build, SBOM and attestations, registry, Terraform Cloud Run and DAST validation">
+          <div class="flow">
+            <div class="node"><b>Source</b><small>FastAPI + tests</small></div>
+            <div class="node"><b>CI gates</b><small>tests · secrets · lock drift</small></div>
+            <div class="node"><b>Security</b><small>CodeQL · dependency review</small></div>
+            <div class="node"><b>Container</b><small>Trivy · SBOM</small></div>
+            <div class="node"><b>Publish</b><small>GHCR · provenance · SBOM attest</small></div>
+            <div class="node"><b>Infrastructure</b><small>Terraform · Trivy config</small></div>
+            <div class="node"><b>Runtime</b><small>Cloud Run · ZAP baseline</small></div>
+          </div>
+          <p class="diagram-caption">Visual 1 — lifecycle-oriented security flow. Every stage maps to source-controlled workflow or infrastructure files in the public repository.</p>
+        </div>
+        <div class="grid3" style="margin-top:16px">
+          <div class="panel"><h3>Reproducible dependencies</h3><p>Runtime and development dependencies are installed from lock files with hashes. CI regenerates both locks and fails if the committed files drift from their inputs.</p><a class="source" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/.github/workflows/ci.yml">CI workflow</a></div>
+          <div class="panel"><h3>Immutable build inputs</h3><p>The container uses digest-pinned base images, a multi-stage build and a distroless non-root runtime. GitHub Actions in the security workflows are also pinned to immutable commit SHAs.</p><a class="source" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/Dockerfile">Dockerfile</a></div>
+          <div class="panel"><h3>Traceable outputs</h3><p>Published images receive signed build provenance plus a CycloneDX SBOM attestation bound to the container digest.</p><a class="source" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/.github/workflows/publish.yml">Publish workflow</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="threats">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">02 · Threat model</p><h2>Controls are tied to failure modes.</h2></div><p>This is a pragmatic threat model for the repository and delivery path. It is not a claim of complete STRIDE coverage; it documents what the current implementation actually mitigates and where gaps remain.</p></div>
+        <div class="panel" style="overflow-x:auto">
+          <table class="matrix">
+            <thead><tr><th>Failure mode</th><th>Engineering control</th><th>Evidence</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Secret committed to repository</td><td>Full-history Gitleaks scan on CI changes</td><td><code>secret-scan</code> job</td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Dependency input changes without regenerated lock</td><td>Hash-locked dependencies + deterministic lockfile drift gate</td><td><code>--require-hashes</code> + pip-tools diff</td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Known high/critical container vulnerability</td><td>Trivy image scan blocks HIGH/CRITICAL findings with available fixes</td><td><code>container-security.yml</code></td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Mutable or opaque release artifact</td><td>Digest-addressed image, build provenance and SBOM attestation</td><td><code>publish.yml</code></td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Insecure Terraform configuration</td><td>fmt/init/validate/test plus HIGH/CRITICAL Trivy configuration scan</td><td><code>iac.yml</code></td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Unauthenticated public Cloud Run invocation</td><td>No <code>allUsers</code> invoker binding; dedicated runtime service account</td><td><code>infra/main.tf</code></td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Basic runtime web misconfiguration</td><td>OWASP ZAP baseline + explicit policy and application security headers</td><td><code>dast.yml</code> + <code>app/main.py</code></td><td class="status implemented">Implemented</td></tr>
+              <tr><td>Runtime compromise / anomalous behavior</td><td>Health probes exist, but security observability and detection are not yet implemented</td><td>Roadmap item</td><td class="status gap">Gap</td></tr>
+            </tbody>
+          </table>
+          <p class="diagram-caption">Visual 2 — threat/control matrix. “Implemented” means a directly inspectable control exists in the current public repository; gaps are stated rather than hidden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="controls">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">03 · Control evidence</p><h2>Seven workflows, distinct responsibilities.</h2></div><p>Instead of one oversized CI file, the repository uses specialized workflows. This keeps responsibilities inspectable and allows security checks to fail independently.</p></div>
+        <div class="control-list">
+          <div class="control"><strong>CI</strong><p>Python tests, Gitleaks secret scanning and stale-lock detection. Dependencies are installed with cryptographic hashes.</p></div>
+          <div class="control"><strong>CodeQL</strong><p>Static analysis is separated from functional CI so application-code findings have their own security signal.</p></div>
+          <div class="control"><strong>Dependencies</strong><p>Dependency review evaluates changes introduced by pull requests before merge.</p></div>
+          <div class="control"><strong>Containers</strong><p>Trivy blocks high/critical OS or library vulnerabilities with known fixes, then emits a CycloneDX SBOM artifact.</p></div>
+          <div class="control"><strong>DAST</strong><p>The API is built and started locally in CI, health-checked, then scanned with a digest-pinned OWASP ZAP image and an explicit rules file.</p></div>
+          <div class="control"><strong>IaC</strong><p>Terraform format, initialization, validation and tests run alongside a blocking Trivy configuration scan.</p></div>
+          <div class="control"><strong>Publish</strong><p>The image is pushed to GHCR by commit SHA, then receives signed provenance and an SBOM attestation tied to its digest.</p></div>
+        </div>
+        <div class="tagrow"><span class="tag">least-privilege workflow permissions</span><span class="tag">persist-credentials: false</span><span class="tag">action SHA pinning</span><span class="tag">digest pinning</span><span class="tag">hash-locked Python deps</span><span class="tag">non-root runtime</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="cloud">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">04 · Cloud deployment model</p><h2>Small blast radius by default.</h2></div><p>The Terraform target is intentionally narrow: Artifact Registry plus an authenticated Cloud Run service with a dedicated runtime identity, deletion protection, bounded scaling and explicit CPU/memory limits.</p></div>
+        <div class="panel" role="img" aria-label="GCP architecture from immutable Artifact Registry to authenticated Cloud Run using a dedicated service account">
+          <div class="cloud">
+            <div class="cloud-box"><b>Artifact Registry</b><small>Docker · immutable tags</small></div><div class="chev">→</div>
+            <div class="cloud-box"><b>Cloud Run</b><small>IAM-authenticated · max 3 instances</small></div><div class="chev">→</div>
+            <div class="cloud-box"><b>Runtime identity</b><small>dedicated service account</small></div>
+          </div>
+          <p class="diagram-caption">Visual 3 — GCP deployment boundary. The service accepts network ingress, but the Terraform configuration does not create a public <code>allUsers</code> invoker binding.</p>
+        </div>
+        <div class="grid2" style="margin-top:16px">
+          <div class="panel"><h3>Runtime hardening</h3><p>Distroless non-root image, CPU and memory limits, bounded instance scaling, startup and liveness probes, and a 30-second request timeout.</p></div>
+          <div class="panel"><h3>Artifact registry</h3><p>Container repository tags are configured as immutable. The intended deployment input is a digest-pinned image rather than a mutable tag.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">05 · Validation method</p><h2>Prefer gates that can prove they fail.</h2></div><p>The engineering principle behind the project is falsifiability: a security control is more useful when its blocking behavior can be exercised, observed and explained.</p></div>
+        <div class="grid2">
+          <div class="panel"><div class="experiment"><h3>Lockfile drift</h3><p>CI regenerates runtime and development locks from the declared inputs and compares them with the repository. Any difference becomes a blocking error rather than silent dependency drift.</p></div></div>
+          <div class="panel"><div class="experiment"><h3>Terraform policy</h3><p>Terraform tests and Trivy config scanning turn unsafe infrastructure changes into pull-request failures before any cloud deployment is attempted.</p></div></div>
+          <div class="panel"><div class="experiment"><h3>Container vulnerability gate</h3><p>The built image itself — not only source dependencies — is scanned. HIGH/CRITICAL fixed vulnerabilities return a non-zero exit code.</p></div></div>
+          <div class="panel"><div class="experiment"><h3>Runtime DAST</h3><p>ZAP runs against a real containerized instance after a health check, which tests HTTP behavior that static source analysis cannot observe.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">06 · Trade-offs & gaps</p><h2>What this project does not claim.</h2></div><p>A credible security case study should show its boundaries. The repository is a reference implementation, not a production platform, and several controls remain intentionally outside the current scope.</p></div>
+        <div class="grid3">
+          <div class="panel"><h3>Authentication is infrastructure-level</h3><p>The current API has no business authentication or authorization model. Cloud Run IAM prevents anonymous service invocation in the Terraform target, but application identity is not modeled.</p></div>
+          <div class="panel"><h3>No runtime detection stack</h3><p>Health probes are availability controls, not security monitoring. Structured audit logs, alerting, runtime detection and incident-response telemetry remain future work.</p></div>
+          <div class="panel"><h3>DAST is baseline, not exhaustive</h3><p>ZAP baseline is useful regression coverage but does not replace authenticated active scanning, manual testing or a targeted application security assessment.</p></div>
+        </div>
+        <p class="note" style="margin-top:16px"><strong>Design choice:</strong> the project favors a small number of explainable, blocking controls over a large scanner collection. New tools should be added only when they cover a distinct failure mode and produce actionable signal.</p>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">07 · Research bridge</p><h2>From software provenance to AI provenance.</h2></div><p>The project creates a concrete bridge toward secure MLOps: many software supply-chain guarantees have direct analogues for models, datasets and ML pipelines, but the semantics of trust become harder.</p></div>
+        <div class="bridge">
+          <div class="bridge-col"><h3>Software delivery</h3><ul><li>source revision</li><li>dependency lock</li><li>container digest</li><li>SBOM</li><li>build provenance</li><li>artifact attestation</li><li>runtime DAST</li></ul></div>
+          <div class="bridge-arrow">→</div>
+          <div class="bridge-col"><h3>Secure MLOps questions</h3><ul><li>model-code revision</li><li>dataset lineage and integrity</li><li>model digest and signing</li><li>ML-BOM / component inventory</li><li>training provenance</li><li>model + dataset attestations</li><li>adversarial / behavioral validation</li></ul></div>
+        </div>
+        <div class="panel" style="margin-top:16px"><p class="kicker">Research question</p><h3 style="font-size:24px;max-width:900px">How can software supply-chain guarantees be extended to models, datasets and ML pipelines while remaining practical for engineering teams?</h3></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="heading"><div><p class="kicker">08 · Inspect the evidence</p><h2>Every major claim links back to source.</h2></div><p>The repository remains the source of truth. These links go directly to the implementation areas behind the case study.</p></div>
+        <div class="grid3">
+          <a class="panel" href="https://github.com/Bastien-Lup/secure-api-devsecops/tree/main/.github/workflows"><h3>Security workflows ↗</h3><p>CI, CodeQL, dependency review, container security, DAST, IaC and publish.</p></a>
+          <a class="panel" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/Dockerfile"><h3>Container hardening ↗</h3><p>Digest-pinned bases, hash-locked install and distroless non-root runtime.</p></a>
+          <a class="panel" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/infra/main.tf"><h3>GCP Terraform ↗</h3><p>Artifact Registry, runtime identity and hardened Cloud Run service.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="shell">Bastien Ladra · Secure API DevSecOps engineering case study · 2026</div></footer>
+</body>
+</html>

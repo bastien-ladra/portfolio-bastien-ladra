@@ -73,6 +73,7 @@ export const projects = [
       "Terraform checks and hardened Cloud Run deployment",
     ],
     href: "https://github.com/Bastien-Lup/secure-api-devsecops",
+    caseStudyHref: `${import.meta.env.BASE_URL}case-study-secure-api.html`,
   },
   {
     title: "Secure Software Supply Chain Lab",
