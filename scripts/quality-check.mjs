@@ -47,6 +47,12 @@ function checkHtml(path, { renderedContent = true } = {}) {
 checkHtml("index.html", { renderedContent: false });
 checkHtml("public/resume.html");
 checkHtml("public/case-study-secure-api.html");
+checkHtml("public/case-study-secure-api-fr.html");
+
+const rootHtml = read("index.html");
+requirePattern("index.html", rootHtml, /<html\s+lang=["']fr["']/i, "French must be the initial document language");
+requirePattern("index.html", rootHtml, /hreflang=["']fr["']/i, "French hreflang is missing");
+requirePattern("index.html", rootHtml, /hreflang=["']en["']/i, "English hreflang is missing");
 
 const indexPage = read("src/pages/Index.jsx");
 requirePattern("src/pages/Index.jsx", indexPage, /className=["']skip-link["']/, "missing keyboard skip link");
@@ -81,10 +87,16 @@ rejectPattern(
 const projectCard = read("src/components/ProjectCard.jsx");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.caseStudy/, "localized case-study CTA is missing");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.challenge/, "localized project impact labels are missing");
+requirePattern("src/components/ProjectCard.jsx", projectCard, /case-study-secure-api-fr|replace\(["']\.html["'],\s*["']-fr\.html["']\)/, "French case-study routing is missing");
 
 const publicResume = read("public/resume.html");
+requirePattern("public/resume.html", publicResume, /data-language=["']fr["']/, "French public resume is missing");
+requirePattern("public/resume.html", publicResume, /data-language=["']en["']/, "English public resume is missing");
+requirePattern("public/resume.html", publicResume, /data-switch=["']fr["']/, "resume FR switch is missing");
+requirePattern("public/resume.html", publicResume, /data-switch=["']en["']/, "resume EN switch is missing");
 rejectPattern("public/resume.html", publicResume, /06\s*77\s*60\s*26\s*07/, "public resume exposes a phone number");
 rejectPattern("public/resume.html", publicResume, /33440|33240|Cubzac|Ambar[eè]s/i, "public resume exposes home-location details");
+rejectPattern("public/resume.html", publicResume, /github\.com\/Bastien-Lup\/secure-api-devsecops/, "public resume contains a stale repository URL");
 
 const caseStudy = read("public/case-study-secure-api.html");
 requirePattern("public/case-study-secure-api.html", caseStudy, /What this project does not claim/, "case study must state limitations");
@@ -100,6 +112,16 @@ rejectPattern(
   caseStudy,
   /github\.com\/Bastien-Lup\/secure-api-devsecops/,
   "case study contains a stale pre-transfer repository URL",
+);
+
+const frenchCaseStudy = read("public/case-study-secure-api-fr.html");
+requirePattern("public/case-study-secure-api-fr.html", frenchCaseStudy, /Ce que ce projet ne prétend pas/, "French case study must state limitations");
+requirePattern("public/case-study-secure-api-fr.html", frenchCaseStudy, /Question de recherche/, "French case study must include the research bridge");
+requirePattern(
+  "public/case-study-secure-api-fr.html",
+  frenchCaseStudy,
+  /https:\/\/github\.com\/bastien-ladra\/secure-api-devsecops/,
+  "French case study must link to the canonical source repository",
 );
 
 if (failures.length) {
