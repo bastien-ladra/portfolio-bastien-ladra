@@ -1,19 +1,24 @@
 import ProjectCard from "../components/ProjectCard";
 import SectionHeading from "../components/SectionHeading";
-import { projects } from "../data/content";
 
-export default function Projects() {
+export default function Projects({ projects, language, copy }) {
   return (
     <section id="projects" className="section-block">
       <div className="site-shell">
         <SectionHeading
-          eyebrow="Selected work"
-          title="Two projects that show how I think and build."
-          description="Rather than list every experiment, I highlight the work most relevant to DevSecOps, cloud security and trustworthy software delivery."
+          eyebrow={copy.eyebrow}
+          title={copy.title}
+          description={copy.description}
         />
         <div className="grid gap-5 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} featured={index === 0} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              featured={index === 0}
+              language={language}
+              copy={copy}
+            />
           ))}
         </div>
       </div>

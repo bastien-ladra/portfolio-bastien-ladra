@@ -1,12 +1,17 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-const labels = [
-  ["Challenge", "challenge"],
-  ["Approach", "approach"],
-  ["Outcome", "outcome"],
-];
+export default function ProjectCard({ project, featured = false, language, copy }) {
+  const labels = [
+    [copy.challenge, "challenge"],
+    [copy.approach, "approach"],
+    [copy.outcome, "outcome"],
+  ];
+  const caseStudyHref = project.caseStudyHref
+    ? language === "fr"
+      ? project.caseStudyHref.replace(".html", "-fr.html")
+      : project.caseStudyHref
+    : null;
 
-export default function ProjectCard({ project, featured = false }) {
   return (
     <article className={`project-card ${featured ? "lg:col-span-2" : ""}`}>
       <div className="flex h-full flex-col">
@@ -23,7 +28,7 @@ export default function ProjectCard({ project, featured = false }) {
               target="_blank"
               rel="noreferrer"
               className="icon-link"
-              aria-label={`Open ${project.title} source repository`}
+              aria-label={`${copy.sourceAria} ${project.title}`}
             >
               <ArrowUpRight size={20} aria-hidden="true" />
             </a>
@@ -51,12 +56,12 @@ export default function ProjectCard({ project, featured = false }) {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-            {project.caseStudyHref ? (
+            {caseStudyHref ? (
               <a
-                href={project.caseStudyHref}
+                href={caseStudyHref}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
               >
-                Read engineering case study <ArrowRight size={15} aria-hidden="true" />
+                {copy.caseStudy} <ArrowRight size={15} aria-hidden="true" />
               </a>
             ) : null}
             {project.href ? (
@@ -66,7 +71,7 @@ export default function ProjectCard({ project, featured = false }) {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 transition hover:text-slate-200"
               >
-                View source <ArrowUpRight size={15} aria-hidden="true" />
+                {copy.source} <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             ) : null}
           </div>
