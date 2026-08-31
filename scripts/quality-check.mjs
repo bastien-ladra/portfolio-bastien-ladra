@@ -63,6 +63,15 @@ requirePattern("src/pages/Index.jsx", indexPage, /portfolio-language/, "language
 const navbar = read("src/components/Navbar.jsx");
 requirePattern("src/components/Navbar.jsx", navbar, /\["fr", "en"\]/, "FR/EN language selector is missing");
 requirePattern("src/components/Navbar.jsx", navbar, /aria-pressed/, "language selector must expose its active state");
+requirePattern("src/components/Navbar.jsx", navbar, /resume\.html\?lang=\$\{language\}/, "persistent localized resume CTA is missing");
+
+const hero = read("src/sections/Hero.jsx");
+requirePattern("src/sections/Hero.jsx", hero, /RecruiterProofPanel/, "hero must surface recruiter proof panel");
+
+const recruiterProofPanel = read("src/components/RecruiterProofPanel.jsx");
+requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /Des preuves avant les buzzwords/, "French recruiter proof positioning is missing");
+requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /Evidence before buzzwords/, "English recruiter proof positioning is missing");
+requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /Production experience/, "proof panel must keep production experience visible");
 
 const content = read("src/data/content.js");
 requirePattern("src/data/content.js", content, /fr:\s*\{/, "French portfolio content is missing");
@@ -87,7 +96,15 @@ rejectPattern(
 const projectCard = read("src/components/ProjectCard.jsx");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.caseStudy/, "localized case-study CTA is missing");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.challenge/, "localized project impact labels are missing");
+requirePattern("src/components/ProjectCard.jsx", projectCard, /projectProofs/, "project cards must surface verified evidence");
+requirePattern("src/components/ProjectCard.jsx", projectCard, /Private training repository|Dépôt de formation privé/, "private evidence boundary must be explicit");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /case-study-secure-api-fr|replace\(["']\.html["'],\s*["']-fr\.html["']\)/, "French case-study routing is missing");
+
+const projectProofs = read("src/data/projectProofs.js");
+requirePattern("src/data/projectProofs.js", projectProofs, /3,9 → 7,2/, "French OpenSSF proof is missing");
+requirePattern("src/data/projectProofs.js", projectProofs, /3\.9 → 7\.2/, "English OpenSSF proof is missing");
+requirePattern("src/data/projectProofs.js", projectProofs, /workflows sécurité/, "flagship workflow proof is missing");
+requirePattern("src/data/projectProofs.js", projectProofs, /public repository/, "public evidence traceability note is missing");
 
 const publicResume = read("public/resume.html");
 requirePattern("public/resume.html", publicResume, /data-language=["']fr["']/, "French public resume is missing");
