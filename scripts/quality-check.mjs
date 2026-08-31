@@ -103,7 +103,7 @@ requirePattern("src/components/ProjectCard.jsx", projectCard, /case-study-secure
 const projectProofs = read("src/data/projectProofs.js");
 requirePattern("src/data/projectProofs.js", projectProofs, /3,9 → 7,2/, "French OpenSSF proof is missing");
 requirePattern("src/data/projectProofs.js", projectProofs, /3\.9 → 7\.2/, "English OpenSSF proof is missing");
-requirePattern("src/data/projectProofs.js", projectProofs, /workflows sécurité/, "flagship workflow proof is missing");
+requirePattern("src/data/projectProofs.js", projectProofs, /workflows de sécurité/, "flagship workflow proof is missing");
 requirePattern("src/data/projectProofs.js", projectProofs, /public repository/, "public evidence traceability note is missing");
 
 const publicResume = read("public/resume.html");
