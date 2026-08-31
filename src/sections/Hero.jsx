@@ -1,8 +1,11 @@
-import { ArrowRight, FileText, Github, Linkedin, MapPin } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, MapPin } from "lucide-react";
 import RecruiterProofPanel from "../components/RecruiterProofPanel";
 
 export default function Hero({ profile, recruiterSignals, language, copy }) {
-  const resumeHref = `${import.meta.env.BASE_URL}resume.html?lang=${language}`;
+  const resumePdf =
+    language === "fr" ? "Bastien_Ladra_CV_Public_FR_2026.pdf" : "Bastien_Ladra_Resume_Public_EN_2026.pdf";
+  const resumePdfHref = `${import.meta.env.BASE_URL}${resumePdf}`;
+  const resumeLabel = language === "fr" ? "Télécharger le CV" : "Download resume";
 
   return (
     <section id="top" className="relative overflow-hidden pt-28 sm:pt-32" aria-labelledby="hero-title">
@@ -33,11 +36,11 @@ export default function Hero({ profile, recruiterSignals, language, copy }) {
             </div>
 
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href="#projects" className="button-primary">
-                {copy.hero.selectedWork} <ArrowRight size={17} aria-hidden="true" />
+              <a href={resumePdfHref} download={resumePdf} className="button-primary">
+                <Download size={17} aria-hidden="true" /> {resumeLabel}
               </a>
-              <a href={resumeHref} className="button-secondary">
-                <FileText size={17} aria-hidden="true" /> {copy.hero.resume}
+              <a href="#projects" className="button-secondary">
+                {copy.hero.selectedWork} <ArrowRight size={17} aria-hidden="true" />
               </a>
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="button-secondary">
                 <Linkedin size={17} aria-hidden="true" /> LinkedIn
