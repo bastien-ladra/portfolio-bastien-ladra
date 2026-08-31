@@ -29,20 +29,22 @@ function checkAnchors(path, html) {
   }
 }
 
-function checkHtml(path) {
+function checkHtml(path, { renderedContent = true } = {}) {
   const html = read(path);
   requirePattern(path, html, /<html\s+lang=["'][^"']+["']/i, "missing html lang attribute");
   requirePattern(path, html, /<meta\s+name=["']viewport["']/i, "missing viewport metadata");
   requirePattern(path, html, /<meta\s+name=["']description["']/i, "missing meta description");
   requirePattern(path, html, /<title>[^<]+<\/title>/i, "missing document title");
-  requirePattern(path, html, /<main(?:\s|>)/i, "missing main landmark");
-  requirePattern(path, html, /<h1(?:\s|>)/i, "missing primary heading");
+  if (renderedContent) {
+    requirePattern(path, html, /<main(?:\s|>)/i, "missing main landmark");
+    requirePattern(path, html, /<h1(?:\s|>)/i, "missing primary heading");
+    checkAnchors(path, html);
+  }
   rejectPattern(path, html, /placeholder/i, "placeholder content must not be published");
   rejectPattern(path, html, /href=["']http:\/\//i, "unencrypted external link detected");
-  checkAnchors(path, html);
 }
 
-checkHtml("index.html");
+checkHtml("index.html", { renderedContent: false });
 checkHtml("public/resume.html");
 checkHtml("public/case-study-secure-api.html");
 
