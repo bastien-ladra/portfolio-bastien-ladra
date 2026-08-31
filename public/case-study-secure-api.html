@@ -23,7 +23,7 @@
       <nav class="nav" aria-label="Case study navigation">
         <a href="#system">System</a><a href="#threats">Threats</a><a href="#controls">Controls</a><a href="#cloud">Cloud</a><a href="#research">Research bridge</a>
       </nav>
-      <a class="button" href="https://github.com/Bastien-Lup/secure-api-devsecops" target="_blank" rel="noreferrer">Source repository ↗</a>
+      <a class="button" href="https://github.com/bastien-ladra/secure-api-devsecops" target="_blank" rel="noreferrer">Source repository ↗</a>
     </div>
   </header>
 
@@ -59,9 +59,9 @@
           <p class="diagram-caption">Visual 1 — lifecycle-oriented security flow. Every stage maps to source-controlled workflow or infrastructure files in the public repository.</p>
         </div>
         <div class="grid3" style="margin-top:16px">
-          <div class="panel"><h3>Reproducible dependencies</h3><p>Runtime and development dependencies are installed from lock files with hashes. CI regenerates both locks and fails if the committed files drift from their inputs.</p><a class="source" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/.github/workflows/ci.yml">CI workflow</a></div>
-          <div class="panel"><h3>Immutable build inputs</h3><p>The container uses digest-pinned base images, a multi-stage build and a distroless non-root runtime. GitHub Actions in the security workflows are also pinned to immutable commit SHAs.</p><a class="source" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/Dockerfile">Dockerfile</a></div>
-          <div class="panel"><h3>Traceable outputs</h3><p>Published images receive signed build provenance plus a CycloneDX SBOM attestation bound to the container digest.</p><a class="source" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/.github/workflows/publish.yml">Publish workflow</a></div>
+          <div class="panel"><h3>Reproducible dependencies</h3><p>Runtime and development dependencies are installed from lock files with hashes. CI regenerates both locks and fails if the committed files drift from their inputs.</p><a class="source" href="https://github.com/bastien-ladra/secure-api-devsecops/blob/main/.github/workflows/ci.yml">CI workflow</a></div>
+          <div class="panel"><h3>Immutable build inputs</h3><p>The container uses digest-pinned base images, a multi-stage build and a distroless non-root runtime. GitHub Actions in the security workflows are also pinned to immutable commit SHAs.</p><a class="source" href="https://github.com/bastien-ladra/secure-api-devsecops/blob/main/Dockerfile">Dockerfile</a></div>
+          <div class="panel"><h3>Traceable outputs</h3><p>Published images receive signed build provenance plus a CycloneDX SBOM attestation bound to the container digest.</p><a class="source" href="https://github.com/bastien-ladra/secure-api-devsecops/blob/main/.github/workflows/publish.yml">Publish workflow</a></div>
         </div>
       </div>
     </section>
@@ -162,9 +162,9 @@
       <div class="shell">
         <div class="heading"><div><p class="kicker">08 · Inspect the evidence</p><h2>Every major claim links back to source.</h2></div><p>The repository remains the source of truth. These links go directly to the implementation areas behind the case study.</p></div>
         <div class="grid3">
-          <a class="panel" href="https://github.com/Bastien-Lup/secure-api-devsecops/tree/main/.github/workflows"><h3>Security workflows ↗</h3><p>CI, CodeQL, dependency review, container security, DAST, IaC and publish.</p></a>
-          <a class="panel" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/Dockerfile"><h3>Container hardening ↗</h3><p>Digest-pinned bases, hash-locked install and distroless non-root runtime.</p></a>
-          <a class="panel" href="https://github.com/Bastien-Lup/secure-api-devsecops/blob/main/infra/main.tf"><h3>GCP Terraform ↗</h3><p>Artifact Registry, runtime identity and hardened Cloud Run service.</p></a>
+          <a class="panel" href="https://github.com/bastien-ladra/secure-api-devsecops/tree/main/.github/workflows"><h3>Security workflows ↗</h3><p>CI, CodeQL, dependency review, container security, DAST, IaC and publish.</p></a>
+          <a class="panel" href="https://github.com/bastien-ladra/secure-api-devsecops/blob/main/Dockerfile"><h3>Container hardening ↗</h3><p>Digest-pinned bases, hash-locked install and distroless non-root runtime.</p></a>
+          <a class="panel" href="https://github.com/bastien-ladra/secure-api-devsecops/blob/main/infra/main.tf"><h3>GCP Terraform ↗</h3><p>Artifact Registry, runtime identity and hardened Cloud Run service.</p></a>
         </div>
       </div>
     </section>
