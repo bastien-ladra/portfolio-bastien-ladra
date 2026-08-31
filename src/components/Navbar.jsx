@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { FileText, Menu, X } from "lucide-react";
 
 export default function Navbar({ profile, navItems, language, onLanguageChange, copy }) {
   const [open, setOpen] = useState(false);
+  const resumeHref = `${import.meta.env.BASE_URL}resume.html?lang=${language}`;
 
   useEffect(() => {
     const handleEscape = (event) => {
@@ -23,14 +24,21 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
           <span className="hidden text-sm font-semibold text-slate-100 sm:inline">{profile.name}</span>
         </a>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-6 md:flex">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="hidden items-center gap-5 lg:flex">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} className="nav-link">
                 {item.label}
               </a>
             ))}
           </div>
+
+          <a
+            href={resumeHref}
+            className="hidden items-center gap-1.5 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-2 text-xs font-semibold text-cyan-200 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.08] sm:inline-flex"
+          >
+            <FileText size={14} aria-hidden="true" /> {copy.hero.resume}
+          </a>
 
           <div
             className="flex items-center rounded-lg border border-white/10 bg-white/[0.025] p-0.5"
@@ -56,7 +64,7 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
 
           <button
             type="button"
-            className="rounded-lg border border-white/10 p-2 text-slate-300 transition hover:border-white/20 hover:text-slate-100 md:hidden"
+            className="rounded-lg border border-white/10 p-2 text-slate-300 transition hover:border-white/20 hover:text-slate-100 lg:hidden"
             aria-label={open ? copy.closeMenu : copy.openMenu}
             aria-expanded={open}
             aria-controls="mobile-navigation"
@@ -68,7 +76,7 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
       </nav>
 
       {open ? (
-        <div id="mobile-navigation" className="border-t border-white/5 bg-[#0b0f17] md:hidden">
+        <div id="mobile-navigation" className="border-t border-white/5 bg-[#0b0f17] lg:hidden">
           <div className="site-shell flex flex-col py-4">
             {navItems.map((item) => (
               <a
@@ -80,6 +88,13 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
                 {item.label}
               </a>
             ))}
+            <a
+              href={resumeHref}
+              className="mt-2 inline-flex items-center gap-2 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-3 text-sm font-semibold text-cyan-200 sm:hidden"
+              onClick={() => setOpen(false)}
+            >
+              <FileText size={15} aria-hidden="true" /> {copy.hero.resume}
+            </a>
           </div>
         </div>
       ) : null}
