@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
 import Contact from "../sections/Contact";
 import Credentials from "../sections/Credentials";
-import Evidence from "../sections/Evidence";
 import Experience from "../sections/Experience";
 import Expertise from "../sections/Expertise";
 import Hero from "../sections/Hero";
@@ -18,9 +17,8 @@ export default function Index() {
       <main id="main-content">
         <Hero />
         <Projects />
-        <Evidence />
-        <Expertise />
         <Experience />
+        <Expertise />
         <Credentials />
         <Research />
       </main>
