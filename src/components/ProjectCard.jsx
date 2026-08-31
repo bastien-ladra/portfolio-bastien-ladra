@@ -17,9 +17,9 @@ export default function ProjectCard({ project, featured = false }) {
               target="_blank"
               rel="noreferrer"
               className="icon-link"
-              aria-label={`Open ${project.title} on GitHub`}
+              aria-label={`Open ${project.title} source repository`}
             >
-              <ArrowUpRight size={20} />
+              <ArrowUpRight size={20} aria-hidden="true" />
             </a>
           ) : null}
         </div>
@@ -29,18 +29,31 @@ export default function ProjectCard({ project, featured = false }) {
         <div className={`mt-7 grid gap-3 ${featured ? "sm:grid-cols-2" : ""}`}>
           {project.highlights.map((item) => (
             <div key={item} className="flex items-start gap-3 text-sm text-slate-300">
-              <CheckCircle2 className="mt-0.5 shrink-0 text-cyan-300" size={16} />
+              <CheckCircle2 className="mt-0.5 shrink-0 text-cyan-300" size={16} aria-hidden="true" />
               <span>{item}</span>
             </div>
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap gap-2 pt-8">
-          {project.technologies.map((technology) => (
-            <span key={technology} className="tech-pill">
-              {technology}
-            </span>
-          ))}
+        <div className="mt-auto pt-8">
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((technology) => (
+              <span key={technology} className="tech-pill">
+                {technology}
+              </span>
+            ))}
+          </div>
+
+          {project.href ? (
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
+            >
+              Inspect source and controls <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          ) : null}
         </div>
       </div>
     </article>
