@@ -13,14 +13,36 @@ const checks = [
   [/Epitech/, "education signal must be present in structured data"],
   [/Software Supply Chain Security/, "supply-chain expertise must be present in structured data"],
   [/rel=["']icon["'][^>]+favicon\.svg/i, "favicon reference is missing"],
+  [/property=["']og:image["'][^>]+portfolio-og\.png/i, "Open Graph preview image is missing"],
+  [/property=["']og:image:width["'][^>]+1200/i, "Open Graph image width must be 1200"],
+  [/property=["']og:image:height["'][^>]+630/i, "Open Graph image height must be 630"],
+  [/name=["']twitter:card["'][^>]+summary_large_image/i, "Twitter/X must use a large image card"],
+  [/name=["']twitter:image["'][^>]+portfolio-og\.png/i, "Twitter/X preview image is missing"],
 ];
 
 for (const [pattern, message] of checks) {
   if (!pattern.test(html)) failures.push(message);
 }
 
-for (const file of ["public/favicon.svg", "public/robots.txt", "public/sitemap.xml"]) {
+for (const file of [
+  "public/favicon.svg",
+  "public/portfolio-og.png",
+  "public/robots.txt",
+  "public/sitemap.xml",
+]) {
   if (!existsSync(file)) failures.push(`${file} is missing`);
+}
+
+if (existsSync("public/portfolio-og.png")) {
+  const image = readFileSync("public/portfolio-og.png");
+  const pngSignature = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  if (!image.subarray(0, 8).equals(pngSignature)) {
+    failures.push("public/portfolio-og.png is not a valid PNG file");
+  }
+
+  if (image.length < 10_000) {
+    failures.push("public/portfolio-og.png is unexpectedly small");
+  }
 }
 
 if (existsSync("public/robots.txt")) {
