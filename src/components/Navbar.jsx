@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Download, Menu, X } from "lucide-react";
+import { Download, Mail, Menu, X } from "lucide-react";
 
 export default function Navbar({ profile, navItems, language, onLanguageChange, copy }) {
   const [open, setOpen] = useState(false);
@@ -7,6 +7,7 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
     language === "fr" ? "Bastien_Ladra_CV_Public_FR_2026.pdf" : "Bastien_Ladra_Resume_Public_EN_2026.pdf";
   const resumePdfHref = `${import.meta.env.BASE_URL}${resumePdf}`;
   const resumeLabel = language === "fr" ? "CV PDF" : "Resume PDF";
+  const emailLabel = language === "fr" ? "Écrire par e-mail" : "Email me";
 
   useEffect(() => {
     const handleEscape = (event) => {
@@ -42,6 +43,15 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
             className="hidden items-center gap-1.5 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-2 text-xs font-semibold text-cyan-200 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.08] sm:inline-flex"
           >
             <Download size={14} aria-hidden="true" /> {resumeLabel}
+          </a>
+
+          <a
+            href={`mailto:${profile.email}`}
+            className="hidden rounded-lg border border-white/10 p-2 text-slate-300 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.05] hover:text-cyan-200 md:inline-flex"
+            aria-label={emailLabel}
+            title={emailLabel}
+          >
+            <Mail size={16} aria-hidden="true" />
           </a>
 
           <div
@@ -92,14 +102,23 @@ export default function Navbar({ profile, navItems, language, onLanguageChange, 
                 {item.label}
               </a>
             ))}
-            <a
-              href={resumePdfHref}
-              download={resumePdf}
-              className="mt-2 inline-flex items-center gap-2 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-3 text-sm font-semibold text-cyan-200 sm:hidden"
-              onClick={() => setOpen(false)}
-            >
-              <Download size={15} aria-hidden="true" /> {resumeLabel}
-            </a>
+            <div className="mt-2 flex flex-wrap gap-2 sm:hidden">
+              <a
+                href={resumePdfHref}
+                download={resumePdf}
+                className="inline-flex items-center gap-2 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] px-3 py-3 text-sm font-semibold text-cyan-200"
+                onClick={() => setOpen(false)}
+              >
+                <Download size={15} aria-hidden="true" /> {resumeLabel}
+              </a>
+              <a
+                href={`mailto:${profile.email}`}
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/30 hover:text-cyan-200"
+                onClick={() => setOpen(false)}
+              >
+                <Mail size={15} aria-hidden="true" /> {emailLabel}
+              </a>
+            </div>
           </div>
         </div>
       ) : null}
