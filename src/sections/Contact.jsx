@@ -31,7 +31,7 @@ export default function Contact({ profile, copy, language }) {
               <a
                 href={profile.linkedin}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="button-secondary whitespace-nowrap"
               >
                 <Linkedin size={17} aria-hidden="true" /> {linkedinLabel}
@@ -43,10 +43,10 @@ export default function Contact({ profile, copy, language }) {
         <div className="mt-8 flex flex-col gap-5 border-t border-white/5 pt-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {profile.name}. {copy.builtWith}</p>
           <div className="flex items-center gap-4">
-            <a href={profile.github} target="_blank" rel="noreferrer" className="footer-link" aria-label="GitHub">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="GitHub">
               <Github size={18} aria-hidden="true" />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="footer-link" aria-label="LinkedIn">
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="footer-link" aria-label="LinkedIn">
               <Linkedin size={18} aria-hidden="true" />
             </a>
             <a href={`mailto:${profile.email}`} className="footer-link" aria-label="Email">
