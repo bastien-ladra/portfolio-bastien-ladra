@@ -8,8 +8,8 @@ export default function Projects() {
       <div className="site-shell">
         <SectionHeading
           eyebrow="Selected work"
-          title="Engineering evidence, not a logo wall."
-          description="A selection of work that demonstrates security engineering across delivery pipelines, cloud infrastructure and vulnerability operations."
+          title="Two projects that show how I think and build."
+          description="Rather than list every experiment, I highlight the work most relevant to DevSecOps, cloud security and trustworthy software delivery."
         />
         <div className="grid gap-5 lg:grid-cols-2">
           {projects.map((project, index) => (

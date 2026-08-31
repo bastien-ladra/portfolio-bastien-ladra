@@ -6,9 +6,9 @@ export default function Experience() {
     <section id="experience" className="section-block">
       <div className="site-shell">
         <SectionHeading
-          eyebrow="Experience"
-          title="From security operations to secure delivery."
-          description="A trajectory across SecOps, cloud security and DevSecOps, with increasing emphasis on automation and repeatable security controls."
+          eyebrow="Professional experience"
+          title="Production experience across DevSecOps, cloud security and SecOps."
+          description="My background spans secure delivery, GCP security operations, vulnerability supervision and engineering automation — not only lab projects."
         />
 
         <div className="border-t border-white/10">

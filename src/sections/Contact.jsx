@@ -10,14 +10,14 @@ export default function Contact() {
           <div className="mt-5 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
-                Interested in secure cloud systems, DevSecOps or security research?
+                Looking for a DevSecOps or cloud security engineer?
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
-                I am open to engineering and research-oriented conversations around secure software delivery, cloud security and AI security.
+                I am always interested in conversations where secure delivery, cloud infrastructure and pragmatic security engineering matter.
               </p>
             </div>
             <a href={`mailto:${profile.email}`} className="button-primary whitespace-nowrap">
-              Get in touch <ArrowUpRight size={17} />
+              Contact me <ArrowUpRight size={17} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -26,13 +26,13 @@ export default function Contact() {
           <p>© {new Date().getFullYear()} {profile.name}. Built with React.</p>
           <div className="flex items-center gap-4">
             <a href={profile.github} target="_blank" rel="noreferrer" className="footer-link" aria-label="GitHub">
-              <Github size={18} />
+              <Github size={18} aria-hidden="true" />
             </a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="footer-link" aria-label="LinkedIn">
-              <Linkedin size={18} />
+              <Linkedin size={18} aria-hidden="true" />
             </a>
             <a href={`mailto:${profile.email}`} className="footer-link" aria-label="Email">
-              <Mail size={18} />
+              <Mail size={18} aria-hidden="true" />
             </a>
           </div>
         </div>

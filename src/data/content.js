@@ -1,9 +1,9 @@
 export const profile = {
   name: "Bastien Ladra",
-  role: "DevSecOps Consultant & Cybersecurity Engineer",
+  role: "DevSecOps & Cybersecurity Engineer",
   credential: "Epitech — Expert in Information Technologies (2022)",
   tagline:
-    "I design and validate secure cloud and software delivery systems, with controls spanning code, dependencies, containers, infrastructure and runtime.",
+    "Epitech graduate with hands-on experience at NEHS Digital, GSOI and ASTEK. I secure CI/CD pipelines, cloud infrastructure and software supply chains with controls teams can inspect and trust.",
   location: "France",
   email: "ladra.bastien@gmail.com",
   github: "https://github.com/bastien-ladra",
@@ -11,19 +11,18 @@ export const profile = {
 };
 
 export const navItems = [
-  { label: "Projects", href: "#projects" },
-  { label: "Evidence", href: "#evidence" },
-  { label: "Expertise", href: "#expertise" },
+  { label: "Work", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Expertise", href: "#expertise" },
   { label: "Credentials", href: "#credentials" },
-  { label: "Research", href: "#research" },
+  { label: "Contact", href: "#contact" },
 ];
 
-export const focusAreas = [
-  "Cloud Security",
-  "DevSecOps",
-  "Software Supply Chain",
-  "Infrastructure as Code",
+export const recruiterSignals = [
+  { label: "Experience", value: "NEHS Digital · GSOI · ASTEK" },
+  { label: "Focus", value: "DevSecOps · Cloud Security" },
+  { label: "Current", value: "POEI DevSecOps · 300h · 2026" },
+  { label: "Education", value: "Epitech · Expert IT" },
 ];
 
 export const engineeringEvidence = [
@@ -33,14 +32,14 @@ export const engineeringEvidence = [
     detail: "POEI supply-chain lab improved from 3.9/10 to 7.2/10 through repository and pipeline hardening.",
   },
   {
-    value: "SBOM",
-    label: "Provenance & signing",
-    detail: "CycloneDX SBOM, build provenance and Cosign signatures with verification before deployment.",
+    value: "7",
+    label: "Security workflows",
+    detail: "Dedicated CI, CodeQL, dependency review, container security, DAST, IaC and publication workflows in the public Secure API project.",
   },
   {
-    value: "ZAP",
-    label: "Runtime validation",
-    detail: "OWASP ZAP baseline scanning and an explicit DAST policy integrated into the Secure API pipeline.",
+    value: "SBOM",
+    label: "Provenance & signing",
+    detail: "CycloneDX SBOMs, signed provenance and release attestations tied to immutable container digests.",
   },
   {
     value: "GCP",
@@ -52,77 +51,31 @@ export const engineeringEvidence = [
 export const projects = [
   {
     title: "Secure API DevSecOps",
-    type: "Flagship public engineering project",
-    description:
-      "A security-focused FastAPI reference implementation that treats security as a delivery-system property rather than a final scanning step.",
-    technologies: [
-      "FastAPI",
-      "Docker",
-      "GitHub Actions",
-      "CodeQL",
-      "OWASP ZAP",
-      "Terraform",
-      "GCP",
-      "SBOM",
-      "Attestations",
-    ],
-    highlights: [
-      "SAST and dependency security gates",
-      "Container security, SBOM generation and attestations",
-      "DAST with OWASP ZAP and an explicit baseline policy",
-      "Terraform checks and hardened Cloud Run deployment",
-    ],
+    type: "Flagship public project",
+    summary:
+      "A public reference implementation showing how security controls can follow an application from source code to cloud deployment.",
+    challenge:
+      "Security checks are often disconnected scanners with weak guarantees between source, build, infrastructure and runtime.",
+    approach:
+      "Built a FastAPI delivery path with blocking controls for code, dependencies, containers, Terraform, publication and DAST.",
+    outcome:
+      "Seven specialized workflows, hash-locked dependencies, CycloneDX SBOMs, signed attestations, a distroless non-root image and a hardened GCP Cloud Run target.",
+    technologies: ["FastAPI", "GitHub Actions", "Docker", "Terraform", "GCP", "CodeQL", "OWASP ZAP"],
     href: "https://github.com/bastien-ladra/secure-api-devsecops",
     caseStudyHref: `${import.meta.env.BASE_URL}case-study-secure-api.html`,
   },
   {
     title: "Secure Software Supply Chain Lab",
     type: "POEI DevSecOps · 2026",
-    description:
-      "An end-to-end DevSecOps lab built around a deliberately simple Flask application so the engineering focus stays on pipeline security, provenance, signing and deployment trust.",
-    technologies: [
-      "GitHub Actions",
-      "GHCR",
-      "Docker",
-      "Gitleaks",
-      "CodeQL",
-      "CycloneDX",
-      "Cosign",
-      "OpenSSF",
-      "Ortelius",
-    ],
-    highlights: [
-      "Blocking quality gate before container build",
-      "CycloneDX SBOM, provenance and Cosign OCI signatures",
-      "Verification before deployment plus health check and Ortelius synchronization",
-      "OpenSSF Scorecard improved from 3.9/10 to 7.2/10",
-    ],
-  },
-  {
-    title: "Cloud Security Automation",
-    type: "Professional cloud security",
-    description:
-      "Security operations and infrastructure automation work around GCP, network controls, PKI and infrastructure-as-code practices.",
-    technologies: ["GCP", "Terraform", "Cloud Armor", "Ansible", "PKI", "IAM"],
-    highlights: [
-      "Security Command Center operations and mitigation workflows",
-      "Firewall, Cloud Armor and bastion security controls",
-      "Infrastructure automation with Terraform and Ansible",
-      "PKI, certificates, keys and audit remediation",
-    ],
-  },
-  {
-    title: "Security Monitoring Platform",
-    type: "Professional security engineering",
-    description:
-      "A vulnerability supervision initiative combining open-source security tooling, centralized findings and automated deployment workflows.",
-    technologies: ["AWS", "Python", "Shell", "React", "Docker", "Linux"],
-    highlights: [
-      "Centralized vulnerability visibility",
-      "Integration of Vuls, Trivy and other open-source security tooling",
-      "Agent, API and interface development",
-      "Containerized deployment with performance and security testing",
-    ],
+    summary:
+      "A delivery-security lab focused on proving artifact integrity, release traceability and verification before deployment.",
+    challenge:
+      "Demonstrate an end-to-end software supply chain where release trust can be inspected instead of assumed.",
+    approach:
+      "Combined GitHub Actions, Gitleaks, CodeQL, CycloneDX, Cosign, GHCR, OpenSSF Scorecard and Ortelius around a simple Flask service.",
+    outcome:
+      "Improved OpenSSF Scorecard from 3.9/10 to 7.2/10 while adding SBOMs, provenance, signatures and verification before deployment.",
+    technologies: ["GitHub Actions", "GHCR", "CycloneDX", "Cosign", "OpenSSF", "Ortelius"],
   },
 ];
 
@@ -130,25 +83,25 @@ export const expertise = [
   {
     title: "DevSecOps",
     description:
-      "Security controls embedded into delivery pipelines, from source review to runtime validation.",
+      "Security controls embedded into delivery pipelines without turning CI/CD into an unreadable scanner collection.",
     items: ["GitHub Actions", "GitLab CI/CD", "SAST", "SCA", "DAST", "Quality gates"],
-  },
-  {
-    title: "Software Supply Chain",
-    description:
-      "Traceable and verifiable artifacts with explicit controls around dependencies, provenance and release integrity.",
-    items: ["CycloneDX SBOM", "Cosign", "GHCR", "OpenSSF Scorecard", "Dependency locking"],
   },
   {
     title: "Cloud Security",
     description:
-      "Secure infrastructure design and operations with an emphasis on GCP, identity and protective controls.",
+      "Secure cloud infrastructure and operational controls with practical experience across GCP and AWS environments.",
     items: ["GCP", "AWS", "IAM", "Cloud Run", "Cloud Armor", "PKI/TLS"],
   },
   {
-    title: "Infrastructure & Software",
+    title: "Software Supply Chain",
     description:
-      "Repeatable infrastructure, containers and pragmatic software engineering for security tooling and automation.",
+      "Traceable artifacts and explicit controls around dependencies, provenance, signing and release integrity.",
+    items: ["CycloneDX SBOM", "Cosign", "GHCR", "OpenSSF Scorecard", "Dependency locking"],
+  },
+  {
+    title: "Infrastructure & Automation",
+    description:
+      "Repeatable infrastructure, container hardening and pragmatic automation for security and platform engineering.",
     items: ["Terraform", "Ansible", "Docker", "Linux", "Python", "FastAPI"],
   },
 ];
@@ -159,7 +112,7 @@ export const experiences = [
     company: "NEHS Digital — Projet DRIM-M",
     period: "2023 — 2024 · 8 months",
     summary:
-      "Defined and executed repository migration work while improving CI/CD workflows and GitLab reliability in a production engineering context.",
+      "Worked on repository migration and secure delivery workflows while improving GitLab CI/CD reliability in a production engineering context.",
     items: ["GitLab CI/CD", "Bitbucket migration", "Incident resolution", "Docker", "Ansible", "Red Hat"],
   },
   {
@@ -167,7 +120,7 @@ export const experiences = [
     company: "GSOI",
     period: "2022 — 2023 · 1 year",
     summary:
-      "Operated cloud security controls, infrastructure automation and mitigation workflows on GCP.",
+      "Operated cloud security controls and mitigation workflows on GCP, with infrastructure automation, network protection and PKI responsibilities.",
     items: ["Security Command Center", "GCP", "Terraform", "Cloud Armor", "PKI", "Pentera"],
   },
   {
@@ -175,7 +128,7 @@ export const experiences = [
     company: "ASTEK Digital Cloud Factory",
     period: "2022 · 6 months",
     summary:
-      "Built components for a security supervision solution combining vulnerability tooling, APIs and containerized deployment.",
+      "Contributed to a security supervision platform combining vulnerability tooling, APIs, automation and containerized deployment.",
     items: ["AWS", "Python", "Vuls", "Trivy", "React", "Docker"],
   },
   {

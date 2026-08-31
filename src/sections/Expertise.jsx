@@ -9,9 +9,9 @@ export default function Expertise() {
     <section id="expertise" className="section-block border-y border-white/5 bg-white/[0.015]">
       <div className="site-shell">
         <SectionHeading
-          eyebrow="Engineering focus"
-          title="Security as an engineering discipline."
-          description="My work sits between software delivery, cloud infrastructure and security controls, with automation as the common layer."
+          eyebrow="Expertise"
+          title="What I can bring to an engineering team."
+          description="A practical mix of secure delivery, cloud security, software supply-chain controls and infrastructure automation."
         />
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -20,7 +20,7 @@ export default function Expertise() {
             return (
               <article key={group.title} className="panel p-6 sm:p-7">
                 <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/5 text-cyan-300">
-                  <Icon size={21} />
+                  <Icon size={21} aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-100">{group.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-400">{group.description}</p>
