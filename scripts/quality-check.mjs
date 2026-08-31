@@ -44,10 +44,24 @@ function checkHtml(path, { renderedContent = true } = {}) {
   rejectPattern(path, html, /href=["']http:\/\//i, "unencrypted external link detected");
 }
 
+function checkPdf(path) {
+  const full = join(root, path);
+  if (!existsSync(full)) {
+    failures.push(`${path}: file is missing`);
+    return;
+  }
+
+  const pdf = readFileSync(full);
+  if (pdf.length < 20_000) failures.push(`${path}: PDF is unexpectedly small`);
+  if (pdf.subarray(0, 5).toString("ascii") !== "%PDF-") failures.push(`${path}: invalid PDF signature`);
+}
+
 checkHtml("index.html", { renderedContent: false });
 checkHtml("public/resume.html");
 checkHtml("public/case-study-secure-api.html");
 checkHtml("public/case-study-secure-api-fr.html");
+checkPdf("public/Bastien_Ladra_CV_Public_FR_2026.pdf");
+checkPdf("public/Bastien_Ladra_Resume_Public_EN_2026.pdf");
 
 const rootHtml = read("index.html");
 requirePattern("index.html", rootHtml, /<html\s+lang=["']fr["']/i, "French must be the initial document language");
@@ -59,14 +73,25 @@ requirePattern("src/pages/Index.jsx", indexPage, /className=["']skip-link["']/, 
 requirePattern("src/pages/Index.jsx", indexPage, /id=["']main-content["']/, "missing main-content skip target");
 requirePattern("src/pages/Index.jsx", indexPage, /storedLanguage === ["']en["'] \? ["']en["'] : ["']fr["']/, "French must remain the default language");
 requirePattern("src/pages/Index.jsx", indexPage, /portfolio-language/, "language preference must be persisted");
+requirePattern("src/pages/Index.jsx", indexPage, /language=\{language\}/, "localized recruiter contact actions are missing");
 
 const navbar = read("src/components/Navbar.jsx");
 requirePattern("src/components/Navbar.jsx", navbar, /\["fr", "en"\]/, "FR/EN language selector is missing");
 requirePattern("src/components/Navbar.jsx", navbar, /aria-pressed/, "language selector must expose its active state");
-requirePattern("src/components/Navbar.jsx", navbar, /resume\.html\?lang=\$\{language\}/, "persistent localized resume CTA is missing");
+requirePattern("src/components/Navbar.jsx", navbar, /Bastien_Ladra_CV_Public_FR_2026\.pdf/, "French PDF resume CTA is missing");
+requirePattern("src/components/Navbar.jsx", navbar, /Bastien_Ladra_Resume_Public_EN_2026\.pdf/, "English PDF resume CTA is missing");
+requirePattern("src/components/Navbar.jsx", navbar, /download=\{resumePdf\}/, "persistent resume CTA must download the localized PDF");
 
 const hero = read("src/sections/Hero.jsx");
 requirePattern("src/sections/Hero.jsx", hero, /RecruiterProofPanel/, "hero must surface recruiter proof panel");
+requirePattern("src/sections/Hero.jsx", hero, /Télécharger le CV/, "French recruiter resume CTA is missing");
+requirePattern("src/sections/Hero.jsx", hero, /Download resume/, "English recruiter resume CTA is missing");
+requirePattern("src/sections/Hero.jsx", hero, /download=\{resumePdf\}/, "hero resume CTA must trigger a direct PDF download");
+
+const contact = read("src/sections/Contact.jsx");
+requirePattern("src/sections/Contact.jsx", contact, /profile\.email/, "contact section must expose the public email address");
+requirePattern("src/sections/Contact.jsx", contact, /Écrire par e-mail/, "French direct email CTA is missing");
+requirePattern("src/sections/Contact.jsx", contact, /Connect on LinkedIn/, "English LinkedIn CTA is missing");
 
 const recruiterProofPanel = read("src/components/RecruiterProofPanel.jsx");
 requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /Des preuves avant les buzzwords/, "French recruiter proof positioning is missing");
@@ -111,6 +136,8 @@ requirePattern("public/resume.html", publicResume, /data-language=["']fr["']/, "
 requirePattern("public/resume.html", publicResume, /data-language=["']en["']/, "English public resume is missing");
 requirePattern("public/resume.html", publicResume, /data-switch=["']fr["']/, "resume FR switch is missing");
 requirePattern("public/resume.html", publicResume, /data-switch=["']en["']/, "resume EN switch is missing");
+requirePattern("public/resume.html", publicResume, /3<\/strong><b>expériences pro/, "French resume must prioritize professional experience as a recruiter metric");
+requirePattern("public/resume.html", publicResume, /3<\/strong><b>professional roles/, "English resume must prioritize professional experience as a recruiter metric");
 rejectPattern("public/resume.html", publicResume, /06\s*77\s*60\s*26\s*07/, "public resume exposes a phone number");
 rejectPattern("public/resume.html", publicResume, /33440|33240|Cubzac|Ambar[eè]s/i, "public resume exposes home-location details");
 rejectPattern("public/resume.html", publicResume, /github\.com\/Bastien-Lup\/secure-api-devsecops/, "public resume contains a stale repository URL");
