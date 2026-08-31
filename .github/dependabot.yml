@@ -16,6 +16,14 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-major
+      # react-router-dom is currently unused by the application. Keep it stable
+      # until it can be removed together with a regenerated lockfile.
+      - dependency-name: "react-router-dom"
+      # Lucide is still on 0.x: minor releases can carry a larger API/icon
+      # compatibility surface, so treat those upgrades as intentional work.
+      - dependency-name: "lucide-react"
+        update-types:
+          - version-update:semver-minor
     labels:
       - dependencies
 
