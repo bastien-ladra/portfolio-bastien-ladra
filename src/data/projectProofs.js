@@ -3,12 +3,12 @@ export const projectProofs = {
     "Secure API DevSecOps": {
       label: "Preuves vérifiables",
       metrics: [
-        { value: "7", label: "workflows sécurité" },
+        { value: "7", label: "workflows de sécurité" },
         { value: "SBOM", label: "CycloneDX + attestations" },
         { value: "GCP", label: "Cloud Run via Terraform" },
       ],
       flow: ["Code", "CI", "Artefact", "Cloud"],
-      note: "Le dépôt public permet de remonter de chaque claim vers le workflow, le Dockerfile ou le Terraform correspondant.",
+      note: "Le dépôt public permet de relier chaque affirmation au workflow, au Dockerfile ou au code Terraform correspondant.",
     },
     "Secure Software Supply Chain Lab": {
       label: "Résultats observés",
@@ -17,7 +17,7 @@ export const projectProofs = {
         { value: "SBOM", label: "CycloneDX" },
         { value: "Signé", label: "Cosign + provenance" },
       ],
-      flow: ["Source", "Gates", "Signature", "Vérification"],
+      flow: ["Source", "Contrôles", "Signature", "Vérification"],
       note: "Projet de formation privé : les résultats publiés ici restent limités aux éléments déjà vérifiés et présentés dans le CV public.",
     },
   },
