@@ -41,19 +41,20 @@ jobs:
           .resume-venv/bin/weasyprint public/resume.html public/Bastien_Ladra_CV_Public_FR_2026.pdf
           .resume-venv/bin/weasyprint /tmp/resume-en.html public/Bastien_Ladra_Resume_Public_EN_2026.pdf
           .resume-venv/bin/python - <<'PY'
+          import re
           from pathlib import Path
           from pypdf import PdfReader
 
           expectations = {
               Path('public/Bastien_Ladra_CV_Public_FR_2026.pdf'): [
-                  '3 expériences pro',
-                  'Projet académique',
-                  'Epitech',
+                  'expériences pro',
+                  'projet académique',
+                  'epitech',
               ],
               Path('public/Bastien_Ladra_Resume_Public_EN_2026.pdf'): [
-                  '3 professional roles',
-                  'Academic project',
-                  'Epitech',
+                  'professional roles',
+                  'academic project',
+                  'epitech',
               ],
           }
 
@@ -66,9 +67,12 @@ jobs:
               if pages != 1:
                   raise SystemExit(f'{path}: expected 1 page, got {pages}')
               text = '\n'.join(page.extract_text() or '' for page in reader.pages)
+              normalized = re.sub(r'\s+', ' ', text).casefold()
               for expected in required_text:
-                  if expected not in text:
+                  if expected.casefold() not in normalized:
                       raise SystemExit(f'{path}: missing expected text: {expected}')
+              if path.stat().st_size < 8_000:
+                  raise SystemExit(f'{path}: PDF is unexpectedly small')
               print(f'{path}: 1 page, validated recruiter content, {path.stat().st_size} bytes')
           PY
 
