@@ -1,18 +1,13 @@
 import { Cloud, Code2, Layers3, ShieldCheck } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
-import { expertise } from "../data/content";
 
 const icons = [ShieldCheck, Cloud, Layers3, Code2];
 
-export default function Expertise() {
+export default function Expertise({ expertise, copy }) {
   return (
     <section id="expertise" className="section-block border-y border-white/5 bg-white/[0.015]">
       <div className="site-shell">
-        <SectionHeading
-          eyebrow="Expertise"
-          title="What I can bring to an engineering team."
-          description="A practical mix of secure delivery, cloud security, software supply-chain controls and infrastructure automation."
-        />
+        <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
         <div className="grid gap-5 md:grid-cols-2">
           {expertise.map((group, index) => {
