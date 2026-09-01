@@ -20,6 +20,16 @@ export const projectProofs = {
       flow: ["Source", "Contrôles", "Signature", "Vérification"],
       note: "Projet de formation privé : les résultats publiés ici restent limités aux éléments déjà vérifiés et présentés dans le CV public.",
     },
+    "CyberSOC-AI-Lab": {
+      label: "Preuves publiques",
+      metrics: [
+        { value: "3", label: "scénarios contrôlés" },
+        { value: "≥ 90 %", label: "seuil couverture CI" },
+        { value: "SBOM", label: "CycloneDX + Trivy" },
+      ],
+      flow: ["Logs", "Règles", "IA assistive", "Humain"],
+      note: "Le dépôt public expose le modèle de sécurité, le threat model, les tests, les quality gates et les limites du laboratoire. Les données de démonstration sont synthétiques.",
+    },
   },
   en: {
     "Secure API DevSecOps": {
@@ -41,6 +51,16 @@ export const projectProofs = {
       ],
       flow: ["Source", "Gates", "Signing", "Verification"],
       note: "Private training repository: published outcomes stay limited to evidence already verified and surfaced in the public resume.",
+    },
+    "CyberSOC-AI-Lab": {
+      label: "Public evidence",
+      metrics: [
+        { value: "3", label: "controlled scenarios" },
+        { value: "≥ 90%", label: "CI coverage gate" },
+        { value: "SBOM", label: "CycloneDX + Trivy" },
+      ],
+      flow: ["Logs", "Rules", "AI assist", "Human"],
+      note: "The public repository exposes its security model, threat model, tests, quality gates and lab limitations. Demonstration data is synthetic.",
     },
   },
 };
