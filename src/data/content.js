@@ -25,7 +25,7 @@ export const portfolioContent = {
       role: "Ingénieur DevSecOps & Cybersécurité",
       credential: "Epitech — Expert en technologies de l'information (2022)",
       tagline:
-        "Diplômé d'Epitech avec des expériences chez NEHS Digital, GSOI et ASTEK. Je sécurise les pipelines CI/CD, les infrastructures cloud et les chaînes d'approvisionnement logicielles avec des contrôles concrets et vérifiables.",
+        "Diplômé d'Epitech avec des expériences chez NEHS Digital, GSOI et ASTEK. Je sécurise les pipelines CI/CD, les infrastructures cloud et les chaînes d'approvisionnement logicielles avec des contrôles vérifiables — puis j'explore leur extension aux modèles, datasets et pipelines ML.",
       location: "France",
     },
     navItems: [
@@ -33,6 +33,7 @@ export const portfolioContent = {
       { label: "Expérience", href: "#experience" },
       { label: "Expertise", href: "#expertise" },
       { label: "Formation", href: "#credentials" },
+      { label: "Recherche", href: "#research" },
       { label: "Contact", href: "#contact" },
     ],
     recruiterSignals: [
@@ -143,14 +144,37 @@ export const portfolioContent = {
     ],
     languages: ["Français · C2", "Anglais · C1"],
     research: {
+      status: "Axe exploratoire · objectif doctoral",
       question:
         "Comment étendre les garanties de la supply chain logicielle aux modèles, datasets et pipelines ML tout en restant praticable pour les équipes d'ingénierie ?",
+      hypothesis:
+        "Des garanties utiles pour l'IA nécessitent une chaîne de preuves continue : provenance des données et modèles, attestations vérifiables, politiques explicites et validation humaine aux points de décision.",
+      workstreams: [
+        {
+          label: "01",
+          title: "Modéliser les menaces",
+          description:
+            "Cartographier les surfaces d'attaque du code aux datasets, registres de modèles, artefacts et environnements d'exécution.",
+        },
+        {
+          label: "02",
+          title: "Construire la provenance",
+          description:
+            "Relier SBOM, signatures et attestations aux versions de données, de modèles et de pipelines plutôt qu'au seul conteneur final.",
+        },
+        {
+          label: "03",
+          title: "Évaluer l'adoption",
+          description:
+            "Mesurer couverture, faux positifs, coût d'intégration et friction opérationnelle pour éviter des contrôles corrects mais inutilisables.",
+        },
+      ],
       topics: ["Supply chain logicielle sécurisée", "Sécurité IA / ML", "Secure MLOps", "Provenance logicielle et modèles"],
     },
     copy: {
       metaTitle: "Bastien Ladra — Ingénieur DevSecOps & Cybersécurité",
       metaDescription:
-        "Portfolio de Bastien Ladra, ingénieur DevSecOps et cybersécurité : CI/CD sécurisée, cloud security, software supply chain et automatisation.",
+        "Portfolio de Bastien Ladra, ingénieur DevSecOps et cybersécurité : CI/CD sécurisée, cloud security, software supply chain et sécurité IA.",
       skipToContent: "Aller au contenu",
       navAria: "Navigation principale",
       homeAria: "Accueil de Bastien Ladra",
@@ -199,15 +223,25 @@ export const portfolioContent = {
         languages: "Langues",
       },
       research: {
-        eyebrow: "Ce que j'explore ensuite",
-        title: "De la livraison logicielle sécurisée aux systèmes IA de confiance.",
+        eyebrow: "Axe de recherche",
+        title: "Étendre la chaîne de confiance aux systèmes IA.",
+        description:
+          "Un programme de travail transparent, à l'intersection du DevSecOps, de la sécurité IA et de l'ingénierie des preuves.",
+        questionLabel: "Question de recherche",
+        hypothesisLabel: "Hypothèse de travail",
+        workstreamsLabel: "Trois chantiers à investiguer",
+        evidenceLabel: "Première preuve publique",
+        evidenceTitle: "CyberSOC-AI-Lab : une IA assistive, bornée et auditable",
+        evidenceDescription:
+          "Le laboratoire teste déjà la séparation preuves/instructions, l'évaluation des réponses et la validation humaine sur des données synthétiques.",
+        evidenceCta: "Lire l'étude de cas",
         bridge: ["CI/CD sécurisée", "Secure MLOps", "Sécurité IA"],
       },
       contact: {
         eyebrow: "Contact",
-        title: "Vous recherchez un ingénieur DevSecOps ou cloud security ?",
+        title: "Vous recrutez en DevSecOps ou travaillez sur la sécurité des systèmes IA ?",
         description:
-          "Je suis disponible pour échanger sur des opportunités où la livraison sécurisée, les infrastructures cloud et une cybersécurité pragmatique sont au cœur du besoin.",
+          "Je suis disponible pour échanger sur des opportunités d'ingénierie, des sujets de recherche ou des collaborations où la livraison sécurisée et les systèmes IA de confiance sont au cœur du besoin.",
         cta: "Me contacter",
         builtWith: "Portfolio construit avec React.",
       },
@@ -219,7 +253,7 @@ export const portfolioContent = {
       role: "DevSecOps & Cybersecurity Engineer",
       credential: "Epitech — Expert in Information Technologies (2022)",
       tagline:
-        "Epitech graduate with hands-on experience at NEHS Digital, GSOI and ASTEK. I secure CI/CD pipelines, cloud infrastructure and software supply chains with controls teams can inspect and trust.",
+        "Epitech graduate with hands-on experience at NEHS Digital, GSOI and ASTEK. I secure CI/CD pipelines, cloud infrastructure and software supply chains with inspectable controls — then explore how those guarantees extend to models, datasets and ML pipelines.",
       location: "France",
     },
     navItems: [
@@ -227,6 +261,7 @@ export const portfolioContent = {
       { label: "Experience", href: "#experience" },
       { label: "Expertise", href: "#expertise" },
       { label: "Credentials", href: "#credentials" },
+      { label: "Research", href: "#research" },
       { label: "Contact", href: "#contact" },
     ],
     recruiterSignals: [
@@ -337,14 +372,37 @@ export const portfolioContent = {
     ],
     languages: ["French · C2", "English · C1"],
     research: {
+      status: "Exploratory track · doctoral objective",
       question:
         "How can software supply-chain guarantees be extended to models, datasets and ML pipelines while remaining practical for engineering teams?",
+      hypothesis:
+        "Useful AI assurance requires a continuous evidence chain: data and model provenance, verifiable attestations, explicit policies and human validation at decision points.",
+      workstreams: [
+        {
+          label: "01",
+          title: "Model the threats",
+          description:
+            "Map attack surfaces from source code to datasets, model registries, artifacts and runtime environments.",
+        },
+        {
+          label: "02",
+          title: "Build provenance",
+          description:
+            "Connect SBOMs, signatures and attestations to data, model and pipeline versions—not only to the final container.",
+        },
+        {
+          label: "03",
+          title: "Evaluate adoption",
+          description:
+            "Measure coverage, false positives, integration cost and operational friction so controls remain usable in practice.",
+        },
+      ],
       topics: ["Secure software supply chains", "AI / ML security", "Secure MLOps", "Software and model provenance"],
     },
     copy: {
       metaTitle: "Bastien Ladra — DevSecOps & Cybersecurity Engineer",
       metaDescription:
-        "Bastien Ladra's DevSecOps and cybersecurity portfolio: secure CI/CD, cloud security, software supply chains and infrastructure automation.",
+        "Bastien Ladra's DevSecOps and cybersecurity portfolio: secure CI/CD, cloud security, software supply chains and AI security.",
       skipToContent: "Skip to content",
       navAria: "Primary navigation",
       homeAria: "Bastien Ladra home",
@@ -393,15 +451,25 @@ export const portfolioContent = {
         languages: "Languages",
       },
       research: {
-        eyebrow: "What I am exploring next",
-        title: "From secure software delivery to trustworthy AI systems.",
+        eyebrow: "Research direction",
+        title: "Extending the chain of trust to AI systems.",
+        description:
+          "A transparent work programme at the intersection of DevSecOps, AI security and evidence engineering.",
+        questionLabel: "Research question",
+        hypothesisLabel: "Working hypothesis",
+        workstreamsLabel: "Three investigation tracks",
+        evidenceLabel: "First public proof point",
+        evidenceTitle: "CyberSOC-AI-Lab: bounded, assistive and auditable AI",
+        evidenceDescription:
+          "The lab already tests evidence/instruction separation, response evaluation and human validation on synthetic data.",
+        evidenceCta: "Read the case study",
         bridge: ["Secure CI/CD", "Secure MLOps", "AI security"],
       },
       contact: {
         eyebrow: "Contact",
-        title: "Looking for a DevSecOps or cloud security engineer?",
+        title: "Hiring in DevSecOps or researching secure AI systems?",
         description:
-          "I am always interested in conversations where secure delivery, cloud infrastructure and pragmatic security engineering matter.",
+          "I am open to engineering opportunities, research discussions and collaborations where secure delivery and trustworthy AI systems matter.",
         cta: "Contact me",
         builtWith: "Portfolio built with React.",
       },

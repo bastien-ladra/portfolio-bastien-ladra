@@ -80,6 +80,7 @@ requirePattern("src/pages/Index.jsx", indexPage, /storedLanguage === ["']en["'] 
 requirePattern("src/pages/Index.jsx", indexPage, /portfolio-language/, "language preference must be persisted");
 requirePattern("src/pages/Index.jsx", indexPage, /<Experience[^>]+language=\{language\}/, "experience section must receive the active language");
 requirePattern("src/pages/Index.jsx", indexPage, /<Contact[^>]+language=\{language\}/, "localized recruiter contact actions are missing");
+requirePattern("src/pages/Index.jsx", indexPage, /<Research[^>]+language=\{language\}/, "localized research evidence routing is missing");
 
 const navbar = read("src/components/Navbar.jsx");
 requirePattern("src/components/Navbar.jsx", navbar, /\["fr", "en"\]/, "FR/EN language selector is missing");
@@ -148,6 +149,17 @@ rejectPattern(
   /github\.com\/Bastien-Lup\/secure-api-devsecops/,
   "stale pre-transfer repository URL detected",
 );
+
+const research = read("src/sections/Research.jsx");
+requirePattern("src/sections/Research.jsx", research, /research\.hypothesis/, "research hypothesis must be explicit");
+requirePattern("src/sections/Research.jsx", research, /research\.workstreams/, "research workstreams must be visible");
+requirePattern("src/sections/Research.jsx", research, /case-study-cybersoc/, "research section must link to public AI-security evidence");
+requirePattern("src/sections/Research.jsx", research, /language === ["']fr["']/, "research evidence link must follow the active language");
+
+requirePattern("src/data/content.js", content, /Axe exploratoire · objectif doctoral/, "French doctoral research status is missing");
+requirePattern("src/data/content.js", content, /Exploratory track · doctoral objective/, "English doctoral research status is missing");
+requirePattern("src/data/content.js", content, /Modéliser les menaces/, "French research method is missing");
+requirePattern("src/data/content.js", content, /Model the threats/, "English research method is missing");
 
 const projectCard = read("src/components/ProjectCard.jsx");
 requirePattern("src/components/ProjectCard.jsx", projectCard, /copy\.caseStudy/, "localized case-study CTA is missing");

@@ -12,6 +12,8 @@ Expérience chez **NEHS Digital, GSOI et ASTEK**, diplômé Epitech, avec un foc
 - **Expérience de production** en DevSecOps, SecOps et sécurité cloud.
 - **Secure API DevSecOps** — projet public avec 7 workflows de sécurité, dépendances verrouillées par hash, CodeQL, Trivy, OWASP ZAP, Terraform, SBOM CycloneDX et attestations.
 - **Secure Software Supply Chain Lab** — travail POEI 2026 avec SBOM, provenance, Cosign, GHCR et OpenSSF Scorecard amélioré de **3,9/10 à 7,2/10**.
+- **CyberSOC-AI-Lab** — laboratoire public IA/cybersécurité avec décision humaine, threat model, tests, quality gates et limites documentées.
+- **Axe doctoral explicite** — question, hypothèse et programme de travail autour de la provenance des modèles et datasets, du Secure MLOps et de l'adoption opérationnelle.
 - **FR / EN** — le portfolio, le CV public, les PDF recruteur et l'étude de cas principale sont disponibles dans les deux langues.
 - **Preuves avant les claims** — les éléments publics sont reliés au code ou à des résultats vérifiés, et les limites sont indiquées explicitement.
 
@@ -29,6 +31,14 @@ Projet public de référence : [github.com/bastien-ladra/secure-api-devsecops](h
 ### Secure Software Supply Chain Lab
 
 Projet de formation POEI privé. Les résultats affichés publiquement restent limités aux preuves déjà vérifiées : OpenSSF Scorecard, SBOM, provenance, signature et vérification avant déploiement.
+
+### CyberSOC-AI-Lab et axe de recherche
+
+Le portfolio relie désormais le laboratoire [CyberSOC-AI-Lab](https://github.com/bastien-ladra/CyberSOC-AI-Lab) à un axe de recherche transparent : étendre les garanties de la supply chain logicielle aux modèles, datasets et pipelines ML sans masquer le coût d'adoption pour les équipes.
+
+- [Étude de cas — FR](https://bastien-ladra.github.io/portfolio-bastien-ladra/case-study-cybersoc-fr.html)
+- [Engineering case study — EN](https://bastien-ladra.github.io/portfolio-bastien-ladra/case-study-cybersoc.html)
+- Statut affiché sans ambiguïté : axe exploratoire et objectif doctoral, pas publication revendiquée.
 
 ## Pour les recruteurs
 

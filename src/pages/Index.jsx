@@ -64,7 +64,7 @@ export default function Index() {
           languages={content.languages}
           copy={content.copy.credentials}
         />
-        <Research research={content.research} copy={content.copy.research} />
+        <Research research={content.research} copy={content.copy.research} language={language} />
       </main>
       <Contact profile={content.profile} copy={content.copy.contact} language={language} />
     </div>
