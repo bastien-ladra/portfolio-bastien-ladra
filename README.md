@@ -1,7 +1,7 @@
 # Bastien Ladra — Portfolio DevSecOps & Cybersécurité
 
-**Ingénieur DevSecOps & Cybersécurité · France**  
-Expérience chez **NEHS Digital, GSOI et ASTEK**, diplômé Epitech, avec un focus sur la CI/CD sécurisée, la sécurité cloud et la software supply chain.
+**Spécialiste DevSecOps & Cybersécurité · France**
+Expérience chez **NEHS Digital, GSOI et ASTEK**, titulaire du **Titre RNCP d’Expert en Technologies de l’Information - niveau bac+5** délivré par Epitech, avec un focus sur la CI/CD sécurisée, la sécurité cloud et la software supply chain.
 
 [**Voir le portfolio →**](https://bastien-ladra.github.io/portfolio-bastien-ladra/) · [CV PDF — FR](https://bastien-ladra.github.io/portfolio-bastien-ladra/Bastien_Ladra_CV_Public_FR_2026.pdf) · [Resume PDF — EN](https://bastien-ladra.github.io/portfolio-bastien-ladra/Bastien_Ladra_Resume_Public_EN_2026.pdf) · [LinkedIn](https://www.linkedin.com/in/bastienladra)
 
@@ -69,4 +69,4 @@ npm run check
 
 ---
 
-**English summary:** DevSecOps & Cybersecurity Engineer portfolio focused on secure CI/CD, cloud security and software supply-chain integrity. The portfolio, downloadable English resume and flagship engineering case study are available from the live site.
+**English summary:** DevSecOps & Cybersecurity Specialist portfolio focused on secure CI/CD, cloud security and software supply-chain integrity. Bastien holds the French RNCP title Expert in Information Technologies at bac+5 level; this is not presented as an engineering degree. The portfolio, downloadable English resume and flagship engineering case study are available from the live site.

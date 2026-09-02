@@ -22,10 +22,10 @@ export const portfolioContent = {
   fr: {
     profile: {
       ...sharedProfile,
-      role: "Ingénieur DevSecOps & Cybersécurité",
-      credential: "Epitech — Expert en technologies de l'information (2022)",
+      role: "Spécialiste DevSecOps & Cybersécurité",
+      credential: "Titre RNCP d'Expert en Technologies de l'Information · niveau bac+5 (Epitech, 2022)",
       tagline:
-        "Diplômé d'Epitech avec des expériences chez NEHS Digital, GSOI et ASTEK. Je sécurise les pipelines CI/CD, les infrastructures cloud et les chaînes d'approvisionnement logicielles avec des contrôles vérifiables — puis j'explore leur extension aux modèles, datasets et pipelines ML.",
+        "Titulaire du titre RNCP d'Expert en Technologies de l'Information, avec des expériences chez NEHS Digital, GSOI et ASTEK. Je sécurise les pipelines CI/CD, les infrastructures cloud et les chaînes d'approvisionnement logicielles avec des contrôles vérifiables — puis j'explore leur extension aux modèles, datasets et pipelines ML.",
       location: "France",
     },
     navItems: [
@@ -40,7 +40,7 @@ export const portfolioContent = {
       { label: "Expérience", value: "NEHS Digital · GSOI · ASTEK" },
       { label: "Spécialités", value: "DevSecOps · Cloud Security" },
       { label: "Actuellement", value: "POEI DevSecOps · 300 h · 2026" },
-      { label: "Diplôme", value: "Epitech · Expert IT" },
+      { label: "Qualification", value: "Titre RNCP · niveau bac+5" },
     ],
     projects: [
       {
@@ -140,7 +140,7 @@ export const portfolioContent = {
       { year: "2025", title: "Introduction à EBIOS Risk Manager", issuer: "Club EBIOS" },
       { year: "2023", title: "Google Cybersecurity Certificate", issuer: "Google / Coursera" },
       { year: "2021", title: "SecNumacademie — 4 modules validés", issuer: "ANSSI" },
-      { year: "2022", title: "Expert en technologies de l'information", issuer: "Epitech" },
+      { year: "2022", title: "Titre RNCP d'Expert en Technologies de l'Information", issuer: "Epitech · niveau bac+5" },
     ],
     languages: ["Français · C2", "Anglais · C1"],
     research: {
@@ -172,9 +172,9 @@ export const portfolioContent = {
       topics: ["Supply chain logicielle sécurisée", "Sécurité IA / ML", "Secure MLOps", "Provenance logicielle et modèles"],
     },
     copy: {
-      metaTitle: "Bastien Ladra — Ingénieur DevSecOps & Cybersécurité",
+      metaTitle: "Bastien Ladra — Spécialiste DevSecOps & Cybersécurité",
       metaDescription:
-        "Portfolio de Bastien Ladra, ingénieur DevSecOps et cybersécurité : CI/CD sécurisée, cloud security, software supply chain et sécurité IA.",
+        "Portfolio de Bastien Ladra, spécialiste DevSecOps et cybersécurité, titulaire d'un titre RNCP de niveau bac+5 : CI/CD sécurisée, cloud security, software supply chain et sécurité IA.",
       skipToContent: "Aller au contenu",
       navAria: "Navigation principale",
       homeAria: "Accueil de Bastien Ladra",
@@ -182,7 +182,7 @@ export const portfolioContent = {
       openMenu: "Ouvrir le menu",
       closeMenu: "Fermer le menu",
       hero: {
-        eyebrow: "Ingénieur DevSecOps & Cybersécurité · France",
+        eyebrow: "Spécialiste DevSecOps & Cybersécurité · France",
         headingBefore: "Je sécurise la livraison logicielle et",
         headingAccent: "les infrastructures cloud.",
         selectedWork: "Voir mes projets",
@@ -217,9 +217,9 @@ export const portfolioContent = {
         eyebrow: "Formation & certifications",
         title: "Programme actuel et fondations vérifiées.",
         description:
-          "Une vue concise des formations, certifications et du diplôme qui soutiennent les réalisations techniques présentées ci-dessus.",
+          "Une vue concise du titre RNCP, des formations et des certifications qui soutiennent les réalisations techniques présentées ci-dessus.",
         currentProgram: "Programme en cours",
-        education: "Diplôme & certifications",
+        education: "Titre RNCP & certifications",
         languages: "Langues",
       },
       research: {
@@ -250,10 +250,10 @@ export const portfolioContent = {
   en: {
     profile: {
       ...sharedProfile,
-      role: "DevSecOps & Cybersecurity Engineer",
-      credential: "Epitech — Expert in Information Technologies (2022)",
+      role: "DevSecOps & Cybersecurity Specialist",
+      credential: "French RNCP title: Expert in Information Technologies · bac+5 level (Epitech, 2022)",
       tagline:
-        "Epitech graduate with hands-on experience at NEHS Digital, GSOI and ASTEK. I secure CI/CD pipelines, cloud infrastructure and software supply chains with inspectable controls — then explore how those guarantees extend to models, datasets and ML pipelines.",
+        "Holder of the French RNCP title Expert in Information Technologies, with hands-on experience at NEHS Digital, GSOI and ASTEK. I secure CI/CD pipelines, cloud infrastructure and software supply chains with inspectable controls — then explore how those guarantees extend to models, datasets and ML pipelines.",
       location: "France",
     },
     navItems: [
@@ -268,7 +268,7 @@ export const portfolioContent = {
       { label: "Experience", value: "NEHS Digital · GSOI · ASTEK" },
       { label: "Focus", value: "DevSecOps · Cloud Security" },
       { label: "Current", value: "POEI DevSecOps · 300h · 2026" },
-      { label: "Education", value: "Epitech · Expert IT" },
+      { label: "Qualification", value: "French RNCP title · bac+5 level" },
     ],
     projects: [
       {
@@ -368,7 +368,7 @@ export const portfolioContent = {
       { year: "2025", title: "Introduction to EBIOS Risk Manager", issuer: "Club EBIOS" },
       { year: "2023", title: "Google Cybersecurity Certificate", issuer: "Google / Coursera" },
       { year: "2021", title: "SecNumacademie — 4 modules completed", issuer: "ANSSI" },
-      { year: "2022", title: "Expert in Information Technologies", issuer: "Epitech" },
+      { year: "2022", title: "French RNCP title: Expert in Information Technologies", issuer: "Epitech · bac+5 level" },
     ],
     languages: ["French · C2", "English · C1"],
     research: {
@@ -400,9 +400,9 @@ export const portfolioContent = {
       topics: ["Secure software supply chains", "AI / ML security", "Secure MLOps", "Software and model provenance"],
     },
     copy: {
-      metaTitle: "Bastien Ladra — DevSecOps & Cybersecurity Engineer",
+      metaTitle: "Bastien Ladra — DevSecOps & Cybersecurity Specialist",
       metaDescription:
-        "Bastien Ladra's DevSecOps and cybersecurity portfolio: secure CI/CD, cloud security, software supply chains and AI security.",
+        "Bastien Ladra's DevSecOps and cybersecurity portfolio. Holder of a French RNCP professional title at bac+5 level, focused on secure CI/CD, cloud, software supply chains and AI security.",
       skipToContent: "Skip to content",
       navAria: "Primary navigation",
       homeAria: "Bastien Ladra home",
@@ -410,7 +410,7 @@ export const portfolioContent = {
       openMenu: "Open menu",
       closeMenu: "Close menu",
       hero: {
-        eyebrow: "DevSecOps & Cybersecurity Engineer · France",
+        eyebrow: "DevSecOps & Cybersecurity Specialist · France",
         headingBefore: "I secure software delivery and",
         headingAccent: "cloud infrastructure.",
         selectedWork: "View selected work",
@@ -445,9 +445,9 @@ export const portfolioContent = {
         eyebrow: "Credentials",
         title: "Current training and verified foundations.",
         description:
-          "A concise view of the formal training and certifications that support the engineering work shown above.",
+          "A concise view of the French RNCP professional title, training and certifications that support the work shown above.",
         currentProgram: "Current program",
-        education: "Education & certifications",
+        education: "RNCP title & certifications",
         languages: "Languages",
       },
       research: {

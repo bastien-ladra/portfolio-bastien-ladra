@@ -133,8 +133,11 @@ requirePattern("src/components/RecruiterProofPanel.jsx", recruiterProofPanel, /P
 const content = read("src/data/content.js");
 requirePattern("src/data/content.js", content, /fr:\s*\{/, "French portfolio content is missing");
 requirePattern("src/data/content.js", content, /en:\s*\{/, "English portfolio content is missing");
-requirePattern("src/data/content.js", content, /Ingénieur DevSecOps & Cybersécurité/, "French recruiter positioning is missing");
-requirePattern("src/data/content.js", content, /DevSecOps & Cybersecurity Engineer/, "English recruiter positioning is missing");
+requirePattern("src/data/content.js", content, /Spécialiste DevSecOps & Cybersécurité/, "French recruiter positioning is missing");
+requirePattern("src/data/content.js", content, /DevSecOps & Cybersecurity Specialist/, "English recruiter positioning is missing");
+requirePattern("src/data/content.js", content, /Titre RNCP d'Expert en Technologies de l'Information/, "exact French RNCP qualification is missing");
+requirePattern("src/data/content.js", content, /French RNCP title: Expert in Information Technologies/, "English RNCP qualification is missing");
+rejectPattern("src/data/content.js", content, /Diplômé d'Epitech|Ingénieur DevSecOps & Cybersécurité|DevSecOps & Cybersecurity Engineer/, "RNCP title must not be presented as an engineering degree");
 requirePattern("src/data/content.js", content, /caseStudyHref/, "flagship project must link to its case study");
 requirePattern("src/data/content.js", content, /7\.2\/10/, "verified OpenSSF evidence is missing");
 requirePattern(
@@ -186,6 +189,9 @@ requirePattern("public/resume.html", publicResume, /3<\/strong><b>professional r
 rejectPattern("public/resume.html", publicResume, /06\s*77\s*60\s*26\s*07/, "public resume exposes a phone number");
 rejectPattern("public/resume.html", publicResume, /33440|33240|Cubzac|Ambar[eè]s/i, "public resume exposes home-location details");
 rejectPattern("public/resume.html", publicResume, /github\.com\/Bastien-Lup\/secure-api-devsecops/, "public resume contains a stale repository URL");
+requirePattern("public/resume.html", publicResume, /Titre RNCP d’Expert en Technologies de l’Information, niveau bac\+5/, "French public resume must state the exact RNCP qualification");
+requirePattern("public/resume.html", publicResume, /French RNCP title Expert in Information Technologies, bac\+5 level/, "English public resume must state the RNCP qualification");
+rejectPattern("public/resume.html", publicResume, /INGÉNIEUR DEVSECOPS|CYBERSECURITY ENGINEER|Ingénieur cybersécurité|Cybersecurity engineer/, "public resume must not imply an engineering degree");
 
 const caseStudy = read("public/case-study-secure-api.html");
 requirePattern("public/case-study-secure-api.html", caseStudy, /What this project does not claim/, "case study must state limitations");
