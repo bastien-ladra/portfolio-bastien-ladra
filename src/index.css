@@ -155,6 +155,18 @@ footer[id] {
   pointer-events: none;
 }
 
+.research-glow {
+  position: absolute;
+  right: -13rem;
+  top: 8rem;
+  height: 36rem;
+  width: 36rem;
+  border-radius: 9999px;
+  background: rgba(34, 211, 238, 0.045);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
 .hero-proof-panel::before {
   content: "";
   position: absolute;
