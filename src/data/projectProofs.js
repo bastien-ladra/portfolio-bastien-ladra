@@ -24,11 +24,11 @@ export const projectProofs = {
       label: "Preuves publiques",
       metrics: [
         { value: "3", label: "scénarios contrôlés" },
-        { value: "≥ 90 %", label: "seuil couverture CI" },
+        { value: "200", label: "lignes benchmark préenregistrées" },
         { value: "SBOM", label: "CycloneDX + Trivy" },
       ],
       flow: ["Logs", "Règles", "IA assistive", "Humain"],
-      note: "Le dépôt public expose le modèle de sécurité, le threat model, les tests, les quality gates et les limites du laboratoire. Les données de démonstration sont synthétiques.",
+      note: "Le dépôt public expose le modèle de sécurité, le threat model, les tests, les quality gates, un protocole CIC-IDS2017 reproductible et les limites du laboratoire. La sélection de 200 lignes est préenregistrée ; aucun résultat n'est revendiqué avant exécution réelle.",
     },
   },
   en: {
@@ -56,11 +56,11 @@ export const projectProofs = {
       label: "Public evidence",
       metrics: [
         { value: "3", label: "controlled scenarios" },
-        { value: "≥ 90%", label: "CI coverage gate" },
+        { value: "200", label: "preregistered benchmark rows" },
         { value: "SBOM", label: "CycloneDX + Trivy" },
       ],
       flow: ["Logs", "Rules", "AI assist", "Human"],
-      note: "The public repository exposes its security model, threat model, tests, quality gates and lab limitations. Demonstration data is synthetic.",
+      note: "The public repository exposes its security model, threat model, tests, quality gates, a reproducible CIC-IDS2017 protocol and lab limitations. The 200-row selection is preregistered; no result is claimed before the real run.",
     },
   },
 };
