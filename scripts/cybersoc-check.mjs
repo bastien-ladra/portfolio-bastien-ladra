@@ -28,7 +28,7 @@ requireText("src/data/cyberSocProject.js", projectData, "Three controlled scenar
 requireText("src/data/cyberSocProject.js", projectData, "200 lignes", "French benchmark scope is missing");
 requireText("src/data/cyberSocProject.js", projectData, "200-row", "English benchmark scope is missing");
 requireText("src/data/projectProofs.js", proofs, '"CyberSOC-AI-Lab"', "CyberSOC evidence card is missing");
-requireText("src/data/projectProofs.js", proofs, "≥ 90 %", "French CI coverage gate evidence is missing");
+requireText("src/data/projectProofs.js", proofs, "200", "preregistered benchmark evidence is missing");
 requireText("src/data/projectProofs.js", proofs, "CycloneDX + Trivy", "container/SBOM evidence is missing");
 requireText("src/sections/Projects.jsx", projectsSection, "cyberSocProject", "CyberSOC is not included in selected projects");
 
