@@ -16,7 +16,7 @@ export const cyberSocProject = {
     approach:
       "Détection déterministe avant l'IA, séparation explicite preuves/instructions, assistance Ollama locale optionnelle, évaluation des réponses, validation humaine et audit des décisions.",
     outcome:
-      "Trois scénarios contrôlés, un workflow human-in-the-loop inspectable, un seuil CI de couverture ≥ 90 %, dépendances hash-lockées, conteneur non-root, scan Trivy et SBOM CycloneDX.",
+      "Trois scénarios contrôlés, un workflow human-in-the-loop inspectable, un benchmark CIC-IDS2017 préenregistré sur 200 lignes, un seuil CI de couverture ≥ 90 %, dépendances hash-lockées, conteneur non-root, scan Trivy et SBOM CycloneDX.",
   },
   en: {
     ...shared,
@@ -28,6 +28,6 @@ export const cyberSocProject = {
     approach:
       "Deterministic detection before AI, explicit evidence/instruction separation, optional local Ollama assistance, response evaluation, human validation and decision auditability.",
     outcome:
-      "Three controlled scenarios, an inspectable human-in-the-loop workflow, a ≥90% CI coverage gate, hash-locked dependencies, non-root container runtime, Trivy scanning and a CycloneDX SBOM.",
+      "Three controlled scenarios, an inspectable human-in-the-loop workflow, a preregistered 200-row CIC-IDS2017 benchmark, a ≥90% CI coverage gate, hash-locked dependencies, non-root container runtime, Trivy scanning and a CycloneDX SBOM.",
   },
 };
