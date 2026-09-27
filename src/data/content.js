@@ -233,7 +233,7 @@ export const portfolioContent = {
         evidenceLabel: "Première preuve publique",
         evidenceTitle: "CyberSOC-AI-Lab : une IA assistive, bornée et auditable",
         evidenceDescription:
-          "Le laboratoire teste déjà la séparation preuves/instructions, l'évaluation des réponses et la validation humaine sur des données synthétiques.",
+          "Le laboratoire combine séparation preuves/instructions, validation humaine et un benchmark CIC-IDS2017 préenregistré sur 200 lignes. Le protocole est public ; les résultats restent volontairement non revendiqués avant exécution réelle.",
         evidenceCta: "Lire l'étude de cas",
         bridge: ["CI/CD sécurisée", "Secure MLOps", "Sécurité IA"],
       },
@@ -461,7 +461,7 @@ export const portfolioContent = {
         evidenceLabel: "First public proof point",
         evidenceTitle: "CyberSOC-AI-Lab: bounded, assistive and auditable AI",
         evidenceDescription:
-          "The lab already tests evidence/instruction separation, response evaluation and human validation on synthetic data.",
+          "The lab combines evidence/instruction separation, human validation and a preregistered 200-row CIC-IDS2017 benchmark. The protocol is public; results remain deliberately unclaimed until the real run.",
         evidenceCta: "Read the case study",
         bridge: ["Secure CI/CD", "Secure MLOps", "AI security"],
       },
