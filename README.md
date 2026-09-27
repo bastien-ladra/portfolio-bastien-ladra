@@ -12,7 +12,7 @@ Expérience chez **NEHS Digital, GSOI et ASTEK**, titulaire du **Titre RNCP d’
 - **Expérience de production** en DevSecOps, SecOps et sécurité cloud.
 - **Secure API DevSecOps** — projet public avec 7 workflows de sécurité, dépendances verrouillées par hash, CodeQL, Trivy, OWASP ZAP, Terraform, SBOM CycloneDX et attestations.
 - **Secure Software Supply Chain Lab** — travail POEI 2026 avec SBOM, provenance, Cosign, GHCR et OpenSSF Scorecard amélioré de **3,9/10 à 7,2/10**.
-- **CyberSOC-AI-Lab** — laboratoire public IA/cybersécurité avec décision humaine, threat model, tests, quality gates et limites documentées.
+- **CyberSOC-AI-Lab** — laboratoire public IA/cybersécurité avec décision humaine, threat model, quality gates et benchmark CIC-IDS2017 préenregistré sur 200 lignes ; aucun résultat quantitatif n’est revendiqué avant exécution réelle.
 - **Axe doctoral explicite** — question, hypothèse et programme de travail autour de la provenance des modèles et datasets, du Secure MLOps et de l'adoption opérationnelle.
 - **FR / EN** — le portfolio, le CV public, les PDF recruteur et l'étude de cas principale sont disponibles dans les deux langues.
 - **Preuves avant les claims** — les éléments publics sont reliés au code ou à des résultats vérifiés, et les limites sont indiquées explicitement.
@@ -38,7 +38,7 @@ Le portfolio relie désormais le laboratoire [CyberSOC-AI-Lab](https://github.co
 
 - [Étude de cas — FR](https://bastien-ladra.github.io/portfolio-bastien-ladra/case-study-cybersoc-fr.html)
 - [Engineering case study — EN](https://bastien-ladra.github.io/portfolio-bastien-ladra/case-study-cybersoc.html)
-- Statut affiché sans ambiguïté : axe exploratoire et objectif doctoral, pas publication revendiquée.
+- Statut affiché sans ambiguïté : axe exploratoire et objectif doctoral, pas publication revendiquée. Le protocole benchmark est public, mais les métriques restent absentes tant que l’expérience exacte n’a pas été exécutée.
 
 ## Pour les recruteurs
 
